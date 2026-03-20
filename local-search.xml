@@ -5,8 +5,8 @@
   
   <entry>
     <title>Welcome_to_my_blog!</title>
-    <link href="/2026/03/19/Welcome-to-my-blog/"/>
-    <url>/2026/03/19/Welcome-to-my-blog/</url>
+    <link href="/post/Welcome-to-my-blog/"/>
+    <url>/post/Welcome-to-my-blog/</url>
     
     <content type="html"><![CDATA[<p>这是mu2he的第一篇文章！也是一次测试blog<br>welcome to my blog</p>]]></content>
     
@@ -24,8 +24,8 @@
   
   <entry>
     <title>这是一个占位blog</title>
-    <link href="/2026/03/19/My-First-CTF-WP/"/>
-    <url>/2026/03/19/My-First-CTF-WP/</url>
+    <link href="/post/My-First-CTF-WP/"/>
+    <url>/post/My-First-CTF-WP/</url>
     
     <content type="html"><![CDATA[<p>这里是 wp 分类的第一篇文章，以后打完比赛的复盘都写在这里。<br>等真正写了wp之后，这篇blog将会被删除</p>]]></content>
     
@@ -50,34 +50,9 @@
   
   
   <entry>
-    <title>一些想法</title>
-    <link href="/2026/03/19/Some-Random-Thoughts/"/>
-    <url>/2026/03/19/Some-Random-Thoughts/</url>
-    
-    <content type="html"><![CDATA[<p>大致还要完成的blog内容：<br>1.优化布局与个性化<br>2.写一些非占位blog<br>3.SUCTF复盘</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>思考</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>随笔</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>关于OSINT</title>
-    <link href="/2026/03/19/Tech-Learning-Notes/"/>
-    <url>/2026/03/19/Tech-Learning-Notes/</url>
+    <link href="/post/Tech-Learning-Notes/"/>
+    <url>/post/Tech-Learning-Notes/</url>
     
     <content type="html"><![CDATA[<p>这里是技术分类的第一篇文章，同wp一样，这是占位的</p>]]></content>
     
@@ -92,6 +67,31 @@
     <tags>
       
       <tag>Misc</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>一些想法</title>
+    <link href="/post/Some-Random-Thoughts/"/>
+    <url>/post/Some-Random-Thoughts/</url>
+    
+    <content type="html"><![CDATA[<p>大致还要完成的blog内容：<br>1.优化布局与个性化<br>2.写一些非占位blog<br>3.SUCTF复盘</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>思考</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>随笔</tag>
       
     </tags>
     
