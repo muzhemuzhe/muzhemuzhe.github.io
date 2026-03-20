@@ -429,9 +429,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/03/19/My-First-CTF-WP/" title="这是一个占位blog">
+                      <a href="/2026/03/19/Some-Random-Thoughts/" title="一些想法">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">这是一个占位blog</span>
+                        <span class="hidden-mobile">一些想法</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -455,7 +455,7 @@
       Fluid.utils.createCssLink('https://cdn.jsdelivr.net/npm/@waline/client@v3/dist/waline.css')
       import('https://cdn.jsdelivr.net/npm/@waline/client@v3/dist/waline.js').then(({ init }) => {
         var options = Object.assign(
-          {"serverURL":"https://mu2heblogc.vercel.app","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10},
+          {"serverURL":"https://mu2heblogc.vercel.app","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":[1,500],"pageSize":10},
           {
             el: '#waline',
             path: window.location.pathname

@@ -23,31 +23,6 @@
   
   
   <entry>
-    <title>一些想法</title>
-    <link href="/2026/03/19/Some-Random-Thoughts/"/>
-    <url>/2026/03/19/Some-Random-Thoughts/</url>
-    
-    <content type="html"><![CDATA[<p>大致还要完成的blog内容：<br>1.优化布局与个性化<br>2.写一些非占位blog<br>3.SUCTF复盘</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>思考</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>随笔</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>这是一个占位blog</title>
     <link href="/2026/03/19/My-First-CTF-WP/"/>
     <url>/2026/03/19/My-First-CTF-WP/</url>
@@ -67,6 +42,31 @@
       <tag>CTF</tag>
       
       <tag>Web安全</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>一些想法</title>
+    <link href="/2026/03/19/Some-Random-Thoughts/"/>
+    <url>/2026/03/19/Some-Random-Thoughts/</url>
+    
+    <content type="html"><![CDATA[<p>大致还要完成的blog内容：<br>1.优化布局与个性化<br>2.写一些非占位blog<br>3.SUCTF复盘</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>思考</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>随笔</tag>
       
     </tags>
     
