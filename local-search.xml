@@ -4,27 +4,13 @@
   
   
   <entry>
-    <title>SUCTF2026 misc方向wp</title>
-    <link href="/post/SUCTF2026wp/"/>
-    <url>/post/SUCTF2026wp/</url>
+    <title>SUCTF_wp_2026</title>
+    <link href="/post/SUCTF-wp-2026/"/>
+    <url>/post/SUCTF-wp-2026/</url>
     
-    <content type="html"><![CDATA[<p><strong>SUCTF_2026_Misc</strong></p><blockquote><p>实际上本次题目我只写出一道签到题，其余均是有相关进展但没有解出</p></blockquote><hr><h2 id="SU-CyberTrack"><a href="#SU-CyberTrack" class="headerlink" title="SU_CyberTrack"></a>SU_CyberTrack</h2><p>  首先拿到了一个github的blog网址，进入后大概拿取每一篇文章大意：</p><ol><li><strong>Today -&gt; Momo 是一只布偶猫（ Ragdoll cat）</strong></li><li><strong>Sad -&gt; 没东西</strong></li><li><strong>Normal life -&gt; 提到和shukuang是同事</strong></li><li><strong>Don’t spam -&gt; 邮件被轰炸</strong></li><li><strong>How they found me?? -&gt; 旧网名被找到</strong></li><li><strong>Happy birthday -&gt; 2024年11月23日生日</strong></li><li><strong>Play with me t_t -&gt; 2hi5hu没打mc，mc用户名叫Mnzn233</strong></li></ol><p>以及两张截图: 一张邮件截图，从中可看出使用的邮件是foxmail，并且开启了自动回复（Auto_reply）。还有一张MC截图，从中得到mcID：Mnzn233</p><p><strong>由于给出了blog名字“evan lin”和生日1123，猜想其邮箱名字为<a href="mailto:&#101;&#x76;&#97;&#110;&#x6c;&#105;&#x6e;&#49;&#x31;&#x32;&#51;&#x40;&#102;&#111;&#120;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;">evanlin1123@foxmail.com</a></strong></p><p>随后考虑到头像为avator，其图片名称一般为邮箱哈希值，我们拿到她的哈希值为：<strong>105e127d86711d05460e6072f7d809c5c9e0fe095ca7631e4c2e0ffc4acc3fa9</strong></p><p>通过在线网站解得，<a href="mailto:&#101;&#118;&#x61;&#x6e;&#x6c;&#x69;&#x6e;&#49;&#x31;&#50;&#51;&#64;&#102;&#x6f;&#x78;&#x6d;&#97;&#105;&#108;&#x2e;&#x63;&#111;&#x6d;">evanlin1123@foxmail.com</a>的哈希与之匹配，猜想正确。</p><p><img src="/images/sha256.png" alt="哈希截图"></p><p>由于邮箱开启了自动回复，我们尝试向邮箱发送邮件，拿到回复：</p><p><img src="/images/name.png" alt="name"></p><p>由此我们拿到了题目的第一部分，就是名字部分。</p><p>接下来是第二块，拿到一个特定的字符串。</p><blockquote><p>这边我想了很久不知道怎么进行了，看了Flux的wp之后才知道</p></blockquote><p>网上搜索MC的ID：Mnzn233，在一个网站中找到她可能的曾用名：</p><p><img src="/images/Mnzn233.png" alt="Mnzn233"></p><p>最后在X也就是twitter上找到了TurbidCloud：<br><img src="/images/twitter.png" alt="TurbidCloud"></p><p>进入discord得到字符串：</p><p><img src="/images/strings.png" alt="final"></p><p>SU_forensics</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>wp</category>
-      
-    </categories>
+    <content type="html"><![CDATA[]]></content>
     
     
-    <tags>
-      
-      <tag>CTF</tag>
-      
-      <tag>Misc</tag>
-      
-    </tags>
     
   </entry>
   
@@ -50,31 +36,6 @@
   
   
   <entry>
-    <title>一些想法</title>
-    <link href="/post/Some-Random-Thoughts/"/>
-    <url>/post/Some-Random-Thoughts/</url>
-    
-    <content type="html"><![CDATA[<p>大致还要完成的blog内容：<br>1.优化布局与个性化<br>2.写一些非占位blog<br>3.SUCTF复盘</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>思考</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>随笔</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>关于OSINT</title>
     <link href="/post/Tech-Learning-Notes/"/>
     <url>/post/Tech-Learning-Notes/</url>
@@ -92,6 +53,31 @@
     <tags>
       
       <tag>Misc</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>一些想法</title>
+    <link href="/post/Some-Random-Thoughts/"/>
+    <url>/post/Some-Random-Thoughts/</url>
+    
+    <content type="html"><![CDATA[<p>大致还要完成的blog内容：<br>1.优化布局与个性化<br>2.写一些非占位blog<br>3.SUCTF复盘</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>思考</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>随笔</tag>
       
     </tags>
     
