@@ -9,7 +9,7 @@
   <meta charset="UTF-8">
 
   <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
+  <link rel="icon" href="/img/Cropped_Image.png">
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
@@ -26,20 +26,13 @@
 <meta property="og:site_name" content="mu2he&#39;s blog">
 <meta property="og:description" content="CTF_Misc笔记 something这里可能主要写一点我对于Misc方向的一些解题思路？ 还有的话是我对这个方向的一些吐槽和想法  杂言、介绍  misc 方向实际上包含很多东西，从大方向上来说，应该是：信息搜集、编码转换、数字取证、隐写分析   但是，随着时间和技术的进展，越来越多的题目不在传统CTF的 web、reverse、crypto、pwn 中了，于是乎，这些题目很多放到了 Misc">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://mu2he.me/Misc.jpg">
-<meta property="og:image" content="https://mu2he.me/MCOSINT.png">
-<meta property="og:image" content="https://mu2he.me/fengmi.png">
-<meta property="og:image" content="https://mu2he.me/qizhi.png">
-<meta property="og:image" content="https://mu2he.me/ASCII.png">
-<meta property="og:image" content="https://mu2he.me/I_Love_U.png">
-<meta property="og:image" content="https://mu2he.me/base.png">
-<meta property="og:image" content="https://mu2he.me/morse.png">
+<meta property="og:image" content="https://mu2he.me/images/girl.jpg">
 <meta property="article:published_time" content="2026-03-22T05:48:11.000Z">
-<meta property="article:modified_time" content="2026-03-22T07:06:19.439Z">
+<meta property="article:modified_time" content="2026-03-22T08:12:55.884Z">
 <meta property="article:author" content="mu2he">
 <meta property="article:tag" content="misc&#x2F;OSINT">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://mu2he.me/Misc.jpg">
+<meta name="twitter:image" content="https://mu2he.me/images/girl.jpg">
   
   
   
@@ -77,6 +70,10 @@
 
 
 
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
@@ -107,7 +104,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>mu2he</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -316,6 +313,10 @@
           
         </div>
 
+
+	
+
+
         
           
   <div class="mt-3">
@@ -396,7 +397,7 @@
 </blockquote>
 <h3 id="杂言、介绍"><a href="#杂言、介绍" class="headerlink" title="杂言、介绍"></a>杂言、介绍</h3><p>  misc 方向实际上包含很多东西，从大方向上来说，应该是：<strong>信息搜集、编码转换、数字取证、隐写分析</strong></p>
 <p>  但是，随着时间和技术的进展，越来越多的题目不在传统CTF的 <strong>web、reverse、crypto、pwn</strong> 中了，于是乎，这些题目很多放到了 Misc 中，<strong>AI、区块链、iot 等等</strong>，在 misc 这个分类中，会接触到越来越多的东西了，之前有些 Misc 的题目甚至是逆向的师傅拿的一血。</p>
-<p><img src="/Misc.jpg" srcset="/img/loading.gif" lazyload alt="misc"></p>
+<p><img src="/post/CTF-misc-%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/Misc.jpg" srcset="/img/loading.gif" lazyload alt="misc"></p>
 <h3 id="信息搜集"><a href="#信息搜集" class="headerlink" title="信息搜集"></a>信息搜集</h3><p>这块内容也叫做<strong>开源情报获取——Open source intelligence(OSINT)</strong> , 从各种信息资源中寻找和获取有价值的情报。</p>
 <p>这里会遇到蛮多的题型，大家比较熟悉的应该有 <strong>图寻</strong> ，也就是根据一张照片判断地理位置、建筑名称之类的。</p>
 <blockquote>
@@ -404,26 +405,26 @@
 </blockquote>
 <p>我现在遇到过的OSINT是两种：<br>MC-OSINT 和 blog-OSINT</p>
 <h4 id="MC-OSINT"><a href="#MC-OSINT" class="headerlink" title="MC-OSINT"></a>MC-OSINT</h4><p>遇见的比赛：SHCTF</p>
-<p><img src="/MCOSINT.png" srcset="/img/loading.gif" lazyload alt="MC-OSINT"></p>
+<p><img src="/post/CTF-misc-%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/MCOSINT.png" srcset="/img/loading.gif" lazyload alt="MC-OSINT"></p>
 <blockquote>
 <p>相关工具：cubiomes-viewer<br>推荐使用 xpple&#x2F;cubiomes ，该 fork 版本增加了 1.21.3 以上的版本支持。</p>
 </blockquote>
 <p>根据图片中的相关信息，来判断限制条件，比如群系、朝向。</p>
 <p>也是在这里，知道了蜂蜜块的纹理能够指示方向___*( ￣皿￣)&#x2F;#____</p>
-<p><img src="/fengmi.png" srcset="/img/loading.gif" lazyload alt="蜂蜜块"></p>
+<p><img src="/post/CTF-misc-%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/fengmi.png" srcset="/img/loading.gif" lazyload alt="蜂蜜块"></p>
 <p>另外：<strong>苍白森林在 1.21.4+ 版本中”替换”了部分黑森林的生成位置，两者的气候参数范围高度重叠。因此，在 cubiomes-viewer 上可以忽略苍白森林，当作黑森林即可。</strong></p>
 <p>其次，绒球葱只在繁花森林和草甸生成，靠绒球葱也能进一步限制各种范围。</p>
 <p>说起来 MC 在 CTF 的题目还真不少，还有给出一段summon指令的，去 MC 里面拿个命令方块能秒解。</p>
-<p><img src="/qizhi.png" srcset="/img/loading.gif" lazyload alt="旗帜"></p>
+<p><img src="/post/CTF-misc-%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/qizhi.png" srcset="/img/loading.gif" lazyload alt="旗帜"></p>
 <h4 id="OSINT"><a href="#OSINT" class="headerlink" title="OSINT"></a>OSINT</h4><p>我觉得正常的 OSINT 应该是这边这样子的。<br>以 SUCTF 的 Cybertrack 为例，</p>
 <p>给出一个 blog ，猜想加验证拿到邮箱，然后根据图片内容，找到曾用名，从而在twitter上找到链接，拿到最后的东西。</p>
 <p>OSINT的题型其实蛮吃经验的，<del>但是我还挺喜欢的</del></p>
 <p>虽然我基本上没有做出来的OSINT题目，不过就当经验了。</p>
 <h3 id="编码转换"><a href="#编码转换" class="headerlink" title="编码转换"></a>编码转换</h3><p>实际上，这是个每个方向可能都要的部分，很多提示字符串也是被编码（<strong>encode</strong>）之后给出的。</p>
 <h5 id="ASCII编码"><a href="#ASCII编码" class="headerlink" title="#ASCII编码"></a>#ASCII编码</h5><p>  这个学过计算机相关知识的一定不陌生。这是一种使用指定的 7 位或 8 位二进制数组合来表示 128 或 256 种可能字符的编码方式</p>
-<p><img src="/ASCII.png" srcset="/img/loading.gif" lazyload alt="ASCII"></p>
+<p><img src="/post/CTF-misc-%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/ASCII.png" srcset="/img/loading.gif" lazyload alt="ASCII"></p>
 <p>将 <strong>I Love U</strong> 进行编码后得到：</p>
-<p><img src="/I_Love_U.png" srcset="/img/loading.gif" lazyload alt="I_Love_U"></p>
+<p><img src="/post/CTF-misc-%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/I_Love_U.png" srcset="/img/loading.gif" lazyload alt="I_Love_U"></p>
 <p>十进制：<strong>73 32 76 111 118 101 32 85</strong></p>
 <h5 id="Base"><a href="#Base" class="headerlink" title="#Base"></a>#Base</h5><p>  base家族编码算是现在比较多的的编码方式了。</p>
 <p>  以 Base64 为例，其编码过程为：</p>
@@ -439,7 +440,7 @@
 <p>010011 010110 000101 101110</p>
 <p>映射到字符表得到 <strong>TWFu</strong></p>
 <p>当然，在 Misc 中可能会出现换表 base64 的编码方式，这时候需要我们去解出他的表。</p>
-<p><img src="/base.png" srcset="/img/loading.gif" lazyload alt="换表Base64"></p>
+<p><img src="/post/CTF-misc-%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/base.png" srcset="/img/loading.gif" lazyload alt="换表Base64"></p>
 <p>所以有时候看到 <strong>Alphabet</strong> 要警惕一点。<del>关于我没注意导致一道简单的Misc想了3个小时这件事</del></p>
 <p>下面是一些常用的Base编码对应的字符集和对应说明：</p>
 <table>
@@ -505,7 +506,7 @@
 <p>以上表格内容来自于 <strong>2hi5hu</strong> 大佬</p>
 </blockquote>
 <h5 id="URL编码"><a href="#URL编码" class="headerlink" title="#URL编码"></a>#URL编码</h5><p><strong>URL 编码</strong>, 也被称为百分号编码，是一种编码机制，<strong>其特点是编码后会包含大量的百分号</strong>。用于将不安全或特殊的字符转换为<code>%</code>后跟其 ASCII 的十六进制表示，以确保 URL 的安全传输。</p>
-<h5 id="morse-电码"><a href="#morse-电码" class="headerlink" title="#morse 电码"></a>#morse 电码</h5><p><img src="/morse.png" srcset="/img/loading.gif" lazyload alt="morse"></p>
+<h5 id="morse-电码"><a href="#morse-电码" class="headerlink" title="#morse 电码"></a>#morse 电码</h5><p><img src="/post/CTF-misc-%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/morse.png" srcset="/img/loading.gif" lazyload alt="morse"></p>
 <blockquote>
 <p>其他编码形式等我遇到了再补上</p>
 </blockquote>
@@ -910,6 +911,11 @@
   <script  src="/js/local-search.js" ></script>
 
 
+
+
+  
+<script src="/js/click-effect.js"></script>
+<script src="/js/progress.js"></script>
 
 
 
