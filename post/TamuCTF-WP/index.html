@@ -26,17 +26,13 @@
 <meta property="og:site_name" content="mu2he&#39;s blog">
 <meta property="og:description" content="TamuCTF_wpMisc_Quick_Response附件是一个二维码：  观察后发现定位点被修改。 把二维码矩阵按 module 提取出来后，用棋盘格异或，再整体反相 1234567891011121314151617181920212223242526272829from PIL import Imageimport numpy as npimg &#x3D; Image.open(&quot;qu">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://mu2he.me/post/TamuCTF-WP/quick-response.png">
-<meta property="og:image" content="https://mu2he.me/post/TamuCTF-WP/fixed_qr.png">
-<meta property="og:image" content="https://mu2he.me/post/TamuCTF-WP/time.png">
-<meta property="og:image" content="https://mu2he.me/post/TamuCTF-WP/banner_render.png">
-<meta property="og:image" content="https://mu2he.me/post/TamuCTF-WP/qizhi.png">
+<meta property="og:image" content="https://mu2he.me/images/girl3.jpg">
 <meta property="article:published_time" content="2026-03-22T08:52:22.000Z">
-<meta property="article:modified_time" content="2026-03-22T09:23:56.831Z">
+<meta property="article:modified_time" content="2026-03-22T09:32:24.641Z">
 <meta property="article:author" content="mu2he">
 <meta property="article:tag" content="misc">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://mu2he.me/post/TamuCTF-WP/quick-response.png">
+<meta name="twitter:image" content="https://mu2he.me/images/girl3.jpg">
   
   
   
@@ -395,7 +391,7 @@
             
               <div class="markdown-body">
                 
-                <h2 id="TamuCTF-wp"><a href="#TamuCTF-wp" class="headerlink" title="TamuCTF_wp"></a>TamuCTF_wp</h2><h4 id="Misc-Quick-Response"><a href="#Misc-Quick-Response" class="headerlink" title="Misc_Quick_Response"></a>Misc_Quick_Response</h4><p>附件是一个二维码：</p>
+                <h2 id="TamuCTF-wp"><a href="#TamuCTF-wp" class="headerlink" title="TamuCTF_wp"></a>TamuCTF_wp</h2><h3 id="Misc-Quick-Response"><a href="#Misc-Quick-Response" class="headerlink" title="Misc_Quick_Response"></a>Misc_Quick_Response</h3><p>附件是一个二维码：</p>
 <p><img src="/post/TamuCTF-WP/quick-response.png" srcset="/img/loading.gif" lazyload alt="quick-response"></p>
 <p>观察后发现定位点被修改。</p>
 <p><strong>把二维码矩阵按 module 提取出来后，用棋盘格异或，再整体反相</strong></p>
@@ -404,12 +400,12 @@
 <p><img src="/post/TamuCTF-WP/fixed_qr.png" srcset="/img/loading.gif" lazyload alt="fixed_qr"></p>
 <p>扫描得到：</p>
 <p><strong>gigem{d1d_y0u_n0t1c3_th3_t1m1n9_b175}</strong> </p>
-<h4 id="Misc-Time-Capsule"><a href="#Misc-Time-Capsule" class="headerlink" title="Misc_Time_Capsule"></a>Misc_Time_Capsule</h4><p>拿到附件之后还是蛮明显是一个时间戳隐写的：</p>
+<h3 id="Misc-Time-Capsule"><a href="#Misc-Time-Capsule" class="headerlink" title="Misc_Time_Capsule"></a>Misc_Time_Capsule</h3><p>拿到附件之后还是蛮明显是一个时间戳隐写的：</p>
 <p><img src="/post/TamuCTF-WP/time.png" srcset="/img/loading.gif" lazyload alt="time"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python">times = [<br><span class="hljs-string">&quot;15:01:43&quot;</span>,<span class="hljs-string">&quot;15:01:45&quot;</span>,<span class="hljs-string">&quot;15:01:43&quot;</span>,<span class="hljs-string">&quot;15:01:41&quot;</span>,<span class="hljs-string">&quot;15:01:49&quot;</span>,<span class="hljs-string">&quot;15:02:03&quot;</span>,<br><span class="hljs-string">&quot;15:01:38&quot;</span>,<span class="hljs-string">&quot;15:02:01&quot;</span>,<span class="hljs-string">&quot;15:01:43&quot;</span>,<span class="hljs-string">&quot;15:00:48&quot;</span>,<span class="hljs-string">&quot;15:01:50&quot;</span>,<span class="hljs-string">&quot;15:00:51&quot;</span>,<br><span class="hljs-string">&quot;15:01:35&quot;</span>,<span class="hljs-string">&quot;15:00:51&quot;</span>,<span class="hljs-string">&quot;15:01:54&quot;</span>,<span class="hljs-string">&quot;15:00:52&quot;</span>,<span class="hljs-string">&quot;15:02:05&quot;</span><br>]<br>s = <span class="hljs-string">&#x27;&#x27;</span>.join(<span class="hljs-built_in">chr</span>(<span class="hljs-built_in">int</span>(t[<span class="hljs-number">3</span>:<span class="hljs-number">5</span>])*<span class="hljs-number">60</span> + <span class="hljs-built_in">int</span>(t[<span class="hljs-number">6</span>:<span class="hljs-number">8</span>])) <span class="hljs-keyword">for</span> t <span class="hljs-keyword">in</span> times)<br><span class="hljs-built_in">print</span>(s)<br></code></pre></td></tr></table></figure>
 
 <p><strong>gigem{byg0n3_3r4}</strong></p>
-<h4 id="Misc-Phantom2"><a href="#Misc-Phantom2" class="headerlink" title="Misc_Phantom2"></a>Misc_Phantom2</h4><p>用trufflehog爆破commit hash</p>
+<h3 id="Misc-Phantom2"><a href="#Misc-Phantom2" class="headerlink" title="Misc_Phantom2"></a>Misc_Phantom2</h3><p>用trufflehog爆破commit hash</p>
 <p><a target="_blank" rel="noopener" href="https://2hi5hu.cn/archives/Ciallo_Encrypt">https://2hi5hu.cn/archives/Ciallo_Encrypt</a></p>
 <p><a target="_blank" rel="noopener" href="https://trufflesecurity.com/blog/anyone-can-access-deleted-and-private-repo-data-github">https://trufflesecurity.com/blog/anyone-can-access-deleted-and-private-repo-data-github</a></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Plain">trufflehog.exe github-experimental --repo=https://github.com/tamuctf/phantom2.git --token=ghp_xxx --object-discovery --no-update<br></code></pre></td></tr></table></figure>
@@ -417,13 +413,13 @@
 <p>爆破出来d3cab66d23265b36ecd8cd410554bdfc603e3416</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/tamuctf/phantom2/commit/d3cab66d23265b36ecd8cd410554bdfc603e3416">https://github.com/tamuctf/phantom2/commit/d3cab66d23265b36ecd8cd410554bdfc603e3416</a></p>
 <p><strong>gigem{57up1d_917hu8_3v3n7_4p1_a8f943}</strong></p>
-<h4 id="Misc-Gamer-Returns"><a href="#Misc-Gamer-Returns" class="headerlink" title="Misc_Gamer_Returns"></a>Misc_Gamer_Returns</h4><p>拿到的附件是一个 summon 指令，很明显是一个 MC 的指令，大概是召唤箱子矿车，里面有相应的旗帜，旗帜对应了字母。</p>
+<h3 id="Misc-Gamer-Returns"><a href="#Misc-Gamer-Returns" class="headerlink" title="Misc_Gamer_Returns"></a>Misc_Gamer_Returns</h3><p>拿到的附件是一个 summon 指令，很明显是一个 MC 的指令，大概是召唤箱子矿车，里面有相应的旗帜，旗帜对应了字母。</p>
 <p><img src="/post/TamuCTF-WP/banner_render.png" srcset="/img/loading.gif" lazyload alt="旗帜"></p>
 <p>倒数第四行看不清楚，直接进游戏把对应的旗帜拿出来，发现是反色了，原本红底的旗帜改成了白底，所以看不清楚了。</p>
 <p>那直接那新的把旗帜根据旗帜信息做一遍：</p>
 <p><img src="/post/TamuCTF-WP/qizhi.png" srcset="/img/loading.gif" lazyload alt="qizhi"></p>
 <p><strong>gigem{t1m3_4_g4m1ng}</strong> </p>
-<h4 id="Misc-Short-Term-Fuel-Trim"><a href="#Misc-Short-Term-Fuel-Trim" class="headerlink" title="Misc_Short_Term_Fuel_Trim"></a>Misc_Short_Term_Fuel_Trim</h4><p>是个短时傅里叶变换的文件，把里面内容复原成音频：</p>
+<h3 id="Misc-Short-Term-Fuel-Trim"><a href="#Misc-Short-Term-Fuel-Trim" class="headerlink" title="Misc_Short_Term_Fuel_Trim"></a>Misc_Short_Term_Fuel_Trim</h3><p>是个短时傅里叶变换的文件，把里面内容复原成音频：</p>
 <audio controls>
   <source src="reconstructed_flag.wav" type="audio/wav">
   您的浏览器不支持音频播放。
@@ -439,7 +435,7 @@
 
 <p>这下能听出来了：</p>
 <p><strong>gigem{fft_is_50_0p}</strong></p>
-<h4 id="Crypto-Hidden-log-Factoring"><a href="#Crypto-Hidden-log-Factoring" class="headerlink" title="Crypto_Hidden_log_Factoring"></a>Crypto_Hidden_log_Factoring</h4><p> **generate.py **里先生成 <strong>RSA</strong> 私钥 <strong>d</strong>，再用一个由离散对数秘密 <strong>s</strong> 经过 **HKDF **导出的 **mask **去异或 <strong>d</strong>，得到公开的 <strong>D</strong>；同时又公开了 <strong>A &#x3D; g^s mod p</strong>。最后密文不是标准 RSA，而是 <strong>c &#x3D; m^2 mod n</strong>，也就是 Rabin 型平方加密。 先从 data.txt 里的 <strong>DLP</strong> 公参入手，利用 **s &lt; 2^100 **这个弱点。题目里 <strong>s &#x3D; randint(1, 1 &lt;&lt; 100)</strong>，而给出的这个 p-1 含有很大的平滑部分，足以用 <strong>Pohlig–Hellman</strong> 把 s 恢复出来。</p>
+<h3 id="Crypto-Hidden-log-Factoring"><a href="#Crypto-Hidden-log-Factoring" class="headerlink" title="Crypto_Hidden_log_Factoring"></a>Crypto_Hidden_log_Factoring</h3><p> **generate.py **里先生成 <strong>RSA</strong> 私钥 <strong>d</strong>，再用一个由离散对数秘密 <strong>s</strong> 经过 **HKDF **导出的 **mask **去异或 <strong>d</strong>，得到公开的 <strong>D</strong>；同时又公开了 <strong>A &#x3D; g^s mod p</strong>。最后密文不是标准 RSA，而是 <strong>c &#x3D; m^2 mod n</strong>，也就是 Rabin 型平方加密。 先从 data.txt 里的 <strong>DLP</strong> 公参入手，利用 **s &lt; 2^100 **这个弱点。题目里 <strong>s &#x3D; randint(1, 1 &lt;&lt; 100)</strong>，而给出的这个 p-1 含有很大的平滑部分，足以用 <strong>Pohlig–Hellman</strong> 把 s 恢复出来。</p>
 <p>拿到 s 后，按源码里的同样方式跑 HKDF，得到 mask，再和 <code>D</code> 异或回去，恢复 RSA 私钥 d。这里长度要取 <strong>d.bit_length() &#x2F;&#x2F; 8</strong>，正确值对应 127 字节。</p>
 <p>已知  **(n, e, d) **后，用标准的 “由私钥指数反推分解 n” 方法，利用 <strong>k &#x3D; ed - 1</strong>成功分解出 n &#x3D; p*q</p>
 <p>因为密文是 c &#x3D; m^2 mod n，所以接下来是 Rabin 解密：分别对两个素因子求平方根，再 CRT 合并出 4 个候选明文，其中只有一个是正常 ASCII 且符合 flag 格式，于是得到上面的 flag。源码里这一步对应 <strong>c &#x3D; pow(bytes_to_long(flag.encode()), 2, n)</strong>。</p>
