@@ -19,24 +19,24 @@
   <meta name="author" content="mu2he">
   <meta name="keywords" content="muzhe">
   
-    <meta name="description" content="CTF_Misc笔记 something这里可能主要写一点我对于Misc方向的一些解题思路？ 还有的话是我对这个方向的一些吐槽和想法  杂言、介绍  misc 方向实际上包含很多东西，从大方向上来说，应该是：信息搜集、编码转换、数字取证、隐写分析   但是，随着时间和技术的进展，越来越多的题目不在传统CTF的 web、reverse、crypto、pwn 中了，于是乎，这些题目很多放到了 Misc">
+    <meta name="description" content="TamuCTF_wpMisc_Quick_Response附件是一个二维码：  观察后发现定位点被修改。 把二维码矩阵按 module 提取出来后，用棋盘格异或，再整体反相 1234567891011121314151617181920212223242526272829from PIL import Imageimport numpy as npimg &#x3D; Image.open(&quot;qu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CTF_misc_入门笔记">
-<meta property="og:url" content="https://mu2he.me/post/CTF-misc-%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:title" content="TamuCTF_WP">
+<meta property="og:url" content="https://mu2he.me/post/TamuCTF-WP/index.html">
 <meta property="og:site_name" content="mu2he&#39;s blog">
-<meta property="og:description" content="CTF_Misc笔记 something这里可能主要写一点我对于Misc方向的一些解题思路？ 还有的话是我对这个方向的一些吐槽和想法  杂言、介绍  misc 方向实际上包含很多东西，从大方向上来说，应该是：信息搜集、编码转换、数字取证、隐写分析   但是，随着时间和技术的进展，越来越多的题目不在传统CTF的 web、reverse、crypto、pwn 中了，于是乎，这些题目很多放到了 Misc">
+<meta property="og:description" content="TamuCTF_wpMisc_Quick_Response附件是一个二维码：  观察后发现定位点被修改。 把二维码矩阵按 module 提取出来后，用棋盘格异或，再整体反相 1234567891011121314151617181920212223242526272829from PIL import Imageimport numpy as npimg &#x3D; Image.open(&quot;qu">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://mu2he.me/images/girl.jpg">
-<meta property="article:published_time" content="2026-03-22T05:48:11.000Z">
-<meta property="article:modified_time" content="2026-03-22T08:12:55.884Z">
+<meta property="og:image" content="https://mu2he.me/images/girl3.jpg">
+<meta property="article:published_time" content="2026-03-22T08:52:22.000Z">
+<meta property="article:modified_time" content="2026-03-23T01:38:45.001Z">
 <meta property="article:author" content="mu2he">
-<meta property="article:tag" content="misc&#x2F;OSINT">
+<meta property="article:tag" content="misc">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://mu2he.me/images/girl.jpg">
+<meta name="twitter:image" content="https://mu2he.me/images/girl3.jpg">
   
   
   
-  <title>CTF_misc_入门笔记 - mu2he&#39;s blog</title>
+  <title>TamuCTF_WP - mu2he&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -309,7 +309,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="CTF_misc_入门笔记"></span>
+            <span id="subtitle" data-typed-text="TamuCTF_WP"></span>
           
         </div>
 
@@ -324,7 +324,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-03-22 13:48" pubdate>
+        <time datetime="2026-03-22 16:52" pubdate>
           2026年3月22日 下午
         </time>
       </span>
@@ -336,7 +336,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.1k 字
+          2.6k 字
         
       </span>
     
@@ -347,7 +347,7 @@
         
         
         
-          18 分钟
+          23 分钟
         
       </span>
     
@@ -386,129 +386,49 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">CTF_misc_入门笔记</h1>
+            <h1 id="seo-header">TamuCTF_WP</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="CTF-Misc笔记"><a href="#CTF-Misc笔记" class="headerlink" title="CTF_Misc笔记"></a>CTF_Misc笔记</h2><blockquote>
-<h4 id="something"><a href="#something" class="headerlink" title="something"></a>something</h4><p>这里可能主要写一点我对于Misc方向的一些解题思路？</p>
-<p>还有的话是我对这个方向的一些吐槽和想法</p>
-</blockquote>
-<h3 id="杂言、介绍"><a href="#杂言、介绍" class="headerlink" title="杂言、介绍"></a>杂言、介绍</h3><p>  misc 方向实际上包含很多东西，从大方向上来说，应该是：<strong>信息搜集、编码转换、数字取证、隐写分析</strong></p>
-<p>  但是，随着时间和技术的进展，越来越多的题目不在传统CTF的 <strong>web、reverse、crypto、pwn</strong> 中了，于是乎，这些题目很多放到了 Misc 中，<strong>AI、区块链、iot 等等</strong>，在 misc 这个分类中，会接触到越来越多的东西了，之前有些 Misc 的题目甚至是逆向的师傅拿的一血。</p>
-<p><img src="/post/CTF-misc-%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/Misc.jpg" srcset="/img/loading.gif" lazyload alt="misc"></p>
-<h3 id="信息搜集"><a href="#信息搜集" class="headerlink" title="信息搜集"></a>信息搜集</h3><p>这块内容也叫做<strong>开源情报获取——Open source intelligence(OSINT)</strong> , 从各种信息资源中寻找和获取有价值的情报。</p>
-<p>这里会遇到蛮多的题型，大家比较熟悉的应该有 <strong>图寻</strong> ，也就是根据一张照片判断地理位置、建筑名称之类的。</p>
+                <h2 id="TamuCTF-wp"><a href="#TamuCTF-wp" class="headerlink" title="TamuCTF_wp"></a>TamuCTF_wp</h2><h3 id="Misc-Quick-Response"><a href="#Misc-Quick-Response" class="headerlink" title="Misc_Quick_Response"></a>Misc_Quick_Response</h3><p>附件是一个二维码：</p>
+<p><img src="/post/TamuCTF-WP/quick-response.png" srcset="/img/loading.gif" lazyload alt="quick-response"></p>
+<p>观察后发现定位点被修改。</p>
+<p><strong>把二维码矩阵按 module 提取出来后，用棋盘格异或，再整体反相</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> PIL <span class="hljs-keyword">import</span> Image<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br>img = Image.<span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;quick-response.png&quot;</span>).convert(<span class="hljs-string">&quot;L&quot;</span>)<br>arr = np.array(img) &lt; <span class="hljs-number">100</span><br><br><span class="hljs-comment"># 1) 按 32x32 提取成 29x29 模块矩阵</span><br>mods = np.zeros((<span class="hljs-number">29</span>, <span class="hljs-number">29</span>), dtype=np.uint8)<br><span class="hljs-keyword">for</span> y <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">29</span>):<br>    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">29</span>):<br>        block = arr[y*<span class="hljs-number">32</span>:(y+<span class="hljs-number">1</span>)*<span class="hljs-number">32</span>, x*<span class="hljs-number">32</span>:(x+<span class="hljs-number">1</span>)*<span class="hljs-number">32</span>]<br>        mods[y, x] = <span class="hljs-built_in">int</span>(block.mean() &gt; <span class="hljs-number">0.5</span>)<br><br><span class="hljs-comment"># 2) 构造棋盘格</span><br>checker = np.fromfunction(<span class="hljs-keyword">lambda</span> y, x: (x + y) % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>, (<span class="hljs-number">29</span>, <span class="hljs-number">29</span>), dtype=<span class="hljs-built_in">int</span>).astype(np.uint8)<br><br><span class="hljs-comment"># 3) 恢复真实二维码</span><br>qr = <span class="hljs-number">1</span> - (mods ^ checker)<br><br><span class="hljs-comment"># 4) 加 quiet zone</span><br>canvas = np.zeros((<span class="hljs-number">37</span>, <span class="hljs-number">37</span>), dtype=np.uint8)<br>canvas[<span class="hljs-number">4</span>:<span class="hljs-number">33</span>, <span class="hljs-number">4</span>:<span class="hljs-number">33</span>] = qr<br><br><span class="hljs-comment"># 5) 渲染输出</span><br>out = Image.fromarray((<span class="hljs-number">1</span> - canvas) * <span class="hljs-number">255</span>)  <span class="hljs-comment"># 黑白图</span><br>out = out.resize((<span class="hljs-number">37</span> * <span class="hljs-number">20</span>, <span class="hljs-number">37</span> * <span class="hljs-number">20</span>), Image.NEAREST)<br>out.save(<span class="hljs-string">&quot;recovered_qr.png&quot;</span>)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;已保存 recovered_qr.png&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p><img src="/post/TamuCTF-WP/fixed_qr.png" srcset="/img/loading.gif" lazyload alt="fixed_qr"></p>
+<p>扫描得到：</p>
+<p><strong>gigem{d1d_y0u_n0t1c3_th3_t1m1n9_b175}</strong> </p>
+<h3 id="Misc-Time-Capsule"><a href="#Misc-Time-Capsule" class="headerlink" title="Misc_Time_Capsule"></a>Misc_Time_Capsule</h3><p>拿到附件之后还是蛮明显是一个时间戳隐写的：</p>
+<p><img src="/post/TamuCTF-WP/time.png" srcset="/img/loading.gif" lazyload alt="time"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python">times = [<br><span class="hljs-string">&quot;15:01:43&quot;</span>,<span class="hljs-string">&quot;15:01:45&quot;</span>,<span class="hljs-string">&quot;15:01:43&quot;</span>,<span class="hljs-string">&quot;15:01:41&quot;</span>,<span class="hljs-string">&quot;15:01:49&quot;</span>,<span class="hljs-string">&quot;15:02:03&quot;</span>,<br><span class="hljs-string">&quot;15:01:38&quot;</span>,<span class="hljs-string">&quot;15:02:01&quot;</span>,<span class="hljs-string">&quot;15:01:43&quot;</span>,<span class="hljs-string">&quot;15:00:48&quot;</span>,<span class="hljs-string">&quot;15:01:50&quot;</span>,<span class="hljs-string">&quot;15:00:51&quot;</span>,<br><span class="hljs-string">&quot;15:01:35&quot;</span>,<span class="hljs-string">&quot;15:00:51&quot;</span>,<span class="hljs-string">&quot;15:01:54&quot;</span>,<span class="hljs-string">&quot;15:00:52&quot;</span>,<span class="hljs-string">&quot;15:02:05&quot;</span><br>]<br>s = <span class="hljs-string">&#x27;&#x27;</span>.join(<span class="hljs-built_in">chr</span>(<span class="hljs-built_in">int</span>(t[<span class="hljs-number">3</span>:<span class="hljs-number">5</span>])*<span class="hljs-number">60</span> + <span class="hljs-built_in">int</span>(t[<span class="hljs-number">6</span>:<span class="hljs-number">8</span>])) <span class="hljs-keyword">for</span> t <span class="hljs-keyword">in</span> times)<br><span class="hljs-built_in">print</span>(s)<br></code></pre></td></tr></table></figure>
+
+<p><strong>gigem{byg0n3_3r4}</strong></p>
+<h3 id="Misc-Phantom2"><a href="#Misc-Phantom2" class="headerlink" title="Misc_Phantom2"></a>Misc_Phantom2</h3><p>用trufflehog爆破commit hash</p>
+<p><a target="_blank" rel="noopener" href="https://2hi5hu.cn/archives/Ciallo_Encrypt">https://2hi5hu.cn/archives/Ciallo_Encrypt</a></p>
+<p><a target="_blank" rel="noopener" href="https://trufflesecurity.com/blog/anyone-can-access-deleted-and-private-repo-data-github">https://trufflesecurity.com/blog/anyone-can-access-deleted-and-private-repo-data-github</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Plain">trufflehog.exe github-experimental --repo=https://github.com/tamuctf/phantom2.git --token=ghp_xxx --object-discovery --no-update<br></code></pre></td></tr></table></figure>
+
+<p>爆破出来d3cab66d23265b36ecd8cd410554bdfc603e3416</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/tamuctf/phantom2/commit/d3cab66d23265b36ecd8cd410554bdfc603e3416">https://github.com/tamuctf/phantom2/commit/d3cab66d23265b36ecd8cd410554bdfc603e3416</a></p>
+<p><strong>gigem{57up1d_917hu8_3v3n7_4p1_a8f943}</strong></p>
 <blockquote>
-<p>图寻这块的misc实际上我还没有遇到过。</p>
+<p>这题目是队友做出来的，我觉得蛮有意思就把她的 wp 拿过来了</p>
 </blockquote>
-<p>我现在遇到过的OSINT是两种：<br>MC-OSINT 和 blog-OSINT</p>
-<h4 id="MC-OSINT"><a href="#MC-OSINT" class="headerlink" title="MC-OSINT"></a>MC-OSINT</h4><p>遇见的比赛：SHCTF</p>
-<p><img src="/post/CTF-misc-%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/MCOSINT.png" srcset="/img/loading.gif" lazyload alt="MC-OSINT"></p>
+<h3 id="Misc-Gamer-Returns"><a href="#Misc-Gamer-Returns" class="headerlink" title="Misc_Gamer_Returns"></a>Misc_Gamer_Returns</h3><p>拿到的附件是一个 summon 指令，很明显是一个 MC 的指令，大概是召唤箱子矿车，里面有相应的旗帜，旗帜对应了字母。</p>
+<p><img src="/post/TamuCTF-WP/banner_render.png" srcset="/img/loading.gif" lazyload alt="旗帜"></p>
+<p>倒数第四行看不清楚，直接进游戏把对应的旗帜拿出来，发现是反色了，原本红底的旗帜改成了白底，所以看不清楚了。</p>
+<p>那直接那新的把旗帜根据旗帜信息做一遍：</p>
+<p><img src="/post/TamuCTF-WP/qizhi.png" srcset="/img/loading.gif" lazyload alt="qizhi"></p>
+<p><strong>gigem{t1m3_4_g4m1ng}</strong> </p>
+<h3 id="Crypto-Hidden-log-Factoring"><a href="#Crypto-Hidden-log-Factoring" class="headerlink" title="Crypto_Hidden_log_Factoring"></a>Crypto_Hidden_log_Factoring</h3><p> **generate.py **里先生成 <strong>RSA</strong> 私钥 <strong>d</strong>，再用一个由离散对数秘密 <strong>s</strong> 经过 **HKDF **导出的 **mask **去异或 <strong>d</strong>，得到公开的 <strong>D</strong>；同时又公开了 <strong>A &#x3D; g^s mod p</strong>。最后密文不是标准 RSA，而是 <strong>c &#x3D; m^2 mod n</strong>，也就是 Rabin 型平方加密。 先从 data.txt 里的 <strong>DLP</strong> 公参入手，利用 **s &lt; 2^100 **这个弱点。题目里 <strong>s &#x3D; randint(1, 1 &lt;&lt; 100)</strong>，而给出的这个 p-1 含有很大的平滑部分，足以用 <strong>Pohlig–Hellman</strong> 把 s 恢复出来。</p>
+<p>拿到 s 后，按源码里的同样方式跑 HKDF，得到 mask，再和 <code>D</code> 异或回去，恢复 RSA 私钥 d。这里长度要取 <strong>d.bit_length() &#x2F;&#x2F; 8</strong>，正确值对应 127 字节。</p>
+<p>已知  **(n, e, d) **后，用标准的 “由私钥指数反推分解 n” 方法，利用 <strong>k &#x3D; ed - 1</strong>成功分解出 n &#x3D; p*q</p>
+<p>因为密文是 c &#x3D; m^2 mod n，所以接下来是 Rabin 解密：分别对两个素因子求平方根，再 CRT 合并出 4 个候选明文，其中只有一个是正常 ASCII 且符合 flag 格式，于是得到上面的 flag。源码里这一步对应 <strong>c &#x3D; pow(bytes_to_long(flag.encode()), 2, n)</strong>。</p>
+<p><strong>gigem{100lsb_ed_fact0ring_rab1n_attack_1n_th3_log_3oVAjvoCTGmWg847g9zsNBIyPPWqYdP}</strong> </p>
 <blockquote>
-<p>相关工具：cubiomes-viewer<br>推荐使用 xpple&#x2F;cubiomes ，该 fork 版本增加了 1.21.3 以上的版本支持。</p>
-</blockquote>
-<p>根据图片中的相关信息，来判断限制条件，比如群系、朝向。</p>
-<p>也是在这里，知道了蜂蜜块的纹理能够指示方向___*( ￣皿￣)&#x2F;#____</p>
-<p><img src="/post/CTF-misc-%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/fengmi.png" srcset="/img/loading.gif" lazyload alt="蜂蜜块"></p>
-<p>另外：<strong>苍白森林在 1.21.4+ 版本中”替换”了部分黑森林的生成位置，两者的气候参数范围高度重叠。因此，在 cubiomes-viewer 上可以忽略苍白森林，当作黑森林即可。</strong></p>
-<p>其次，绒球葱只在繁花森林和草甸生成，靠绒球葱也能进一步限制各种范围。</p>
-<p>说起来 MC 在 CTF 的题目还真不少，还有给出一段summon指令的，去 MC 里面拿个命令方块能秒解。</p>
-<p><img src="/post/CTF-misc-%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/qizhi.png" srcset="/img/loading.gif" lazyload alt="旗帜"></p>
-<h4 id="OSINT"><a href="#OSINT" class="headerlink" title="OSINT"></a>OSINT</h4><p>我觉得正常的 OSINT 应该是这边这样子的。<br>以 SUCTF 的 Cybertrack 为例，</p>
-<p>给出一个 blog ，猜想加验证拿到邮箱，然后根据图片内容，找到曾用名，从而在twitter上找到链接，拿到最后的东西。</p>
-<p>OSINT的题型其实蛮吃经验的，<del>但是我还挺喜欢的</del></p>
-<p>虽然我基本上没有做出来的OSINT题目，不过就当经验了。</p>
-<h3 id="编码转换"><a href="#编码转换" class="headerlink" title="编码转换"></a>编码转换</h3><p>实际上，这是个每个方向可能都要的部分，很多提示字符串也是被编码（<strong>encode</strong>）之后给出的。</p>
-<h5 id="ASCII编码"><a href="#ASCII编码" class="headerlink" title="#ASCII编码"></a>#ASCII编码</h5><p>  这个学过计算机相关知识的一定不陌生。这是一种使用指定的 7 位或 8 位二进制数组合来表示 128 或 256 种可能字符的编码方式</p>
-<p><img src="/post/CTF-misc-%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/ASCII.png" srcset="/img/loading.gif" lazyload alt="ASCII"></p>
-<p>将 <strong>I Love U</strong> 进行编码后得到：</p>
-<p><img src="/post/CTF-misc-%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/I_Love_U.png" srcset="/img/loading.gif" lazyload alt="I_Love_U"></p>
-<p>十进制：<strong>73 32 76 111 118 101 32 85</strong></p>
-<h5 id="Base"><a href="#Base" class="headerlink" title="#Base"></a>#Base</h5><p>  base家族编码算是现在比较多的的编码方式了。</p>
-<p>  以 Base64 为例，其编码过程为：</p>
-<ul>
-<li>将原始数据按 <strong>3字节（24位）</strong> 分组。</li>
-<li>每组拆分为 <strong>4个6位</strong> 的数据块。</li>
-<li>每个6位数据映射到Base64字符表（A-Z、a-z、0-9、+、&#x2F;）。</li>
-<li>数据长度不足3字节时，用 <strong>0补齐</strong> 并用 <em>&#x3D;</em> 填充输出。</li>
-</ul>
-<p><strong>示例</strong> 字符串 <em>“<strong>Man</strong>“</em> 的ASCII值为 <em>77 97 110</em>，二进制为：</p>
-<p>01001101 01100001 01101110</p>
-<p>分为4组6位：</p>
-<p>010011 010110 000101 101110</p>
-<p>映射到字符表得到 <strong>TWFu</strong></p>
-<p>当然，在 Misc 中可能会出现换表 base64 的编码方式，这时候需要我们去解出他的表。</p>
-<p><img src="/post/CTF-misc-%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/base.png" srcset="/img/loading.gif" lazyload alt="换表Base64"></p>
-<p>所以有时候看到 <strong>Alphabet</strong> 要警惕一点。<del>关于我没注意导致一道简单的Misc想了3个小时这件事</del></p>
-<p>下面是一些常用的Base编码对应的字符集和对应说明：</p>
-<table>
-<thead>
-<tr>
-<th>编码</th>
-<th>字符集</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>BASE2</td>
-<td>01</td>
-<td>二进制</td>
-</tr>
-<tr>
-<td>BASE16</td>
-<td><code>0123456789ABCDEF (或0123456789abcdef)</code></td>
-<td>十六进制</td>
-</tr>
-<tr>
-<td>BASE32</td>
-<td><code>ABCDEFGHIJKLMNOPQRSTUVWXYZ234567</code></td>
-<td>最多6个<code>=</code>号</td>
-</tr>
-<tr>
-<td>BASE32Hex</td>
-<td><code>0123456789ABCDEFGHIJKLMNOPQRSTUV</code></td>
-<td>Base32 的变体</td>
-</tr>
-<tr>
-<td>BASE58</td>
-<td><code>123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz</code></td>
-<td>注意，这个集合避免了容易混淆的字符，例如数字“0”和大写的字母“O”;主要用于比特币地址</td>
-</tr>
-<tr>
-<td>BASE64</td>
-<td><code>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/</code></td>
-<td>最多2个<code>=</code>号</td>
-</tr>
-<tr>
-<td>BASE64URL</td>
-<td><code>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_</code></td>
-<td>适用于 URL 和文件名</td>
-</tr>
-<tr>
-<td>BASE85</td>
-<td><code>!\&quot;#$%&amp;&#39;()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_abcdefghijklmnopqrstu</code></td>
-<td>例如 Adobe’s ASCII85</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>以上表格内容来自于 <strong>2hi5hu</strong> 大佬</p>
-</blockquote>
-<h5 id="URL编码"><a href="#URL编码" class="headerlink" title="#URL编码"></a>#URL编码</h5><p><strong>URL 编码</strong>, 也被称为百分号编码，是一种编码机制，<strong>其特点是编码后会包含大量的百分号</strong>。用于将不安全或特殊的字符转换为<code>%</code>后跟其 ASCII 的十六进制表示，以确保 URL 的安全传输。</p>
-<h5 id="morse-电码"><a href="#morse-电码" class="headerlink" title="#morse 电码"></a>#morse 电码</h5><p><img src="/post/CTF-misc-%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/morse.png" srcset="/img/loading.gif" lazyload alt="morse"></p>
-<blockquote>
-<p>其他编码形式等我遇到了再补上</p>
+<p>AI 写这个crypto好厉害，我就把附件给他，它直接梭哈了</p>
 </blockquote>
 
                 
@@ -528,7 +448,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/note/" class="category-chain-item">note</a>
+  <a href="/categories/wp/" class="category-chain-item">wp</a>
   
   
 
@@ -543,7 +463,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/misc-OSINT/" class="print-no-link">#misc/OSINT</a>
+        <a href="/tags/misc/" class="print-no-link">#misc</a>
       
     </div>
   
@@ -557,18 +477,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/post/TamuCTF-WP/" title="TamuCTF_WP">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">TamuCTF_WP</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/post/SUCTF-wp-2026/" title="SUCTF2026 misc方向wp">
-                        <span class="hidden-mobile">SUCTF2026 misc方向wp</span>
+                      <a href="/post/CTF-misc-%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/" title="CTF_misc_入门笔记">
+                        <span class="hidden-mobile">CTF_misc_入门笔记</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
