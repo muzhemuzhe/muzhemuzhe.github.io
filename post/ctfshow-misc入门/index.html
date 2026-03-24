@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://mu2he.me/images/wind.jpg">
 <meta property="article:published_time" content="2026-03-24T09:47:36.000Z">
-<meta property="article:modified_time" content="2026-03-24T10:42:12.208Z">
+<meta property="article:modified_time" content="2026-03-24T12:33:40.891Z">
 <meta property="article:author" content="mu2he">
 <meta property="article:tag" content="note&#x2F;misc">
 <meta name="twitter:card" content="summary_large_image">
@@ -336,7 +336,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k 字
+          2.7k 字
         
       </span>
     
@@ -347,7 +347,7 @@
         
         
         
-          10 分钟
+          23 分钟
         
       </span>
     
@@ -443,6 +443,65 @@
 <p><img src="/post/ctfshow-misc%E5%85%A5%E9%97%A8/misc11.png" srcset="/img/loading.gif" lazyload alt="tweakpng"></p>
 <p>发现它有两个 IDAT 块，将第一个 IDAT 块删除之后，图片出现了 flag ：</p>
 <p><img src="/post/ctfshow-misc%E5%85%A5%E9%97%A8/misc11_2.png" srcset="/img/loading.gif" lazyload alt="flag"></p>
+<h2 id="misc12"><a href="#misc12" class="headerlink" title="misc12"></a>misc12</h2><p>hyw, 用 tweakpng 打开有一堆 IDAT 块，一个个删除到第 8 个之后，图片出现了 flag 。</p>
+<p><img src="/post/ctfshow-misc%E5%85%A5%E9%97%A8/misc12_1.png" srcset="/img/loading.gif" lazyload alt="idat"></p>
+<p><img src="/post/ctfshow-misc%E5%85%A5%E9%97%A8/misc12_2.png" srcset="/img/loading.gif" lazyload alt="flag"></p>
+<h2 id="misc13"><a href="#misc13" class="headerlink" title="misc13"></a>misc13</h2><p>用 010 后在其中找到了 被隔开的 flag ，隔一个字母提取字符后得到 flag ：</p>
+<p><img src="/post/ctfshow-misc%E5%85%A5%E9%97%A8/misc13.png" srcset="/img/loading.gif" lazyload alt="ctfshow"></p>
+<p><strong>ctfshow{ae6e3ea48f518b7e42d7de6f412f839a}</strong></p>
+<h2 id="misc14"><a href="#misc14" class="headerlink" title="misc14"></a>misc14</h2><p>是一个 jpg 文件。</p>
+<p>010 里面没有太多信息。</p>
+<p>用 <strong>binwalk</strong> 查看：</p>
+<p><img src="/post/ctfshow-misc%E5%85%A5%E9%97%A8/misc14_1.png" srcset="/img/loading.gif" lazyload alt="misc14"></p>
+<p>发现多张照片。</p>
+<p>唔，使用 <strong>binwalk -e misc14.jpg</strong> 提取失败了，</p>
+<p><strong>foremost</strong> 提取的文件夹只有 1 张图片 ？</p>
+<p>干脆直接在 010 里面搜索 FF D8 , FF D9 ,把前面的图片全部删了，拿到最后的 flag 。</p>
+<p><img src="/post/ctfshow-misc%E5%85%A5%E9%97%A8/misc14_2.jpg" srcset="/img/loading.gif" lazyload alt="flag"></p>
+<p>有些人的 wp 中使用的是 <strong>dd if&#x3D;misc14.jpg of&#x3D;1.jpg skip&#x3D;2103 bs&#x3D;1</strong> 指令</p>
+<p>该指令的意思是：</p>
+<p><strong>把 misc14.jpg 从第 2103 个字节开始，直到文件末尾的数据复制到 1.jpg</strong></p>
+<h2 id="misc15"><a href="#misc15" class="headerlink" title="misc15"></a>misc15</h2><p>给了一个 bmp 文件，但是解法是朴实无华的放入 010 搜索。</p>
+<p><img src="/post/ctfshow-misc%E5%85%A5%E9%97%A8/misc15.png" srcset="/img/loading.gif" lazyload alt="flag"></p>
+<h2 id="misc16"><a href="#misc16" class="headerlink" title="misc16"></a>misc16</h2><p>binwalk 后发现一个奇怪的东西放在图片里面：</p>
+<p><img src="/post/ctfshow-misc%E5%85%A5%E9%97%A8/misc161.png" srcset="/img/loading.gif" lazyload alt="DD4"></p>
+<p>于是提取后打开 DD4 文件拿到 flag ：</p>
+<p> <img src="/post/ctfshow-misc%E5%85%A5%E9%97%A8/misc161.png" srcset="/img/loading.gif" lazyload alt="flag"></p>
+<h2 id="misc17"><a href="#misc17" class="headerlink" title="misc17"></a>misc17</h2><p>用 binwalk 发现一个 bzip2 文件，提取出来之后发现 <del>flag</del> ，竟然没有 flag ！<br>把提取出来的东西放在 010 里面看了一下，结尾竟然是 IEND 嘛 。</p>
+<p>exiftool 并没有东西。</p>
+<p>在 tweakpng 中发现多个 IDAT 块，但是删了没用 ？</p>
+<p>删了没用考虑合并，把全部 IDAT 块合并，然后重新 binwalk 。</p>
+<p>提取出来的东西 <strong>还是没有</strong> flag ！</p>
+<p>仔细检查提取的文件，发现 D6E 实际上是 png 的文件头，改后缀名之后，终于拿到 flag 了。</p>
+<p><img src="/post/ctfshow-misc%E5%85%A5%E9%97%A8/D6E.png" srcset="/img/loading.gif" lazyload alt="D6E"></p>
+<blockquote>
+<p>这道题目看了 wp ，实在是没想到合并 IDAT 块，而且有些师傅的 wp 说直接 binwalk 提取就可以了，我怎么感觉写的不是一道题目 qwq 。还有些师傅说可以用 zsteg 做，我还没有试过。</p>
+</blockquote>
+<h2 id="misc18"><a href="#misc18" class="headerlink" title="misc18"></a>misc18</h2><p>实际上用 010 打开之后搜索就能找到。</p>
+<p>这里我用 exiftool 做的，也是直接就能看到。</p>
+<p><img src="/post/ctfshow-misc%E5%85%A5%E9%97%A8/misc18.png" srcset="/img/loading.gif" lazyload alt="flag"></p>
+<p><strong>ctfshow{325d60c208f728ac17e5f02d4cf5a839}</strong></p>
+<h2 id="misc19"><a href="#misc19" class="headerlink" title="misc19"></a>misc19</h2><p>一样， 010 里面直接搜就行，分成了两段。</p>
+<p>我也是用的 exiftool ，清晰一些。</p>
+<p><img src="/post/ctfshow-misc%E5%85%A5%E9%97%A8/misc19.png" srcset="/img/loading.gif" lazyload alt="flag"></p>
+<h2 id="misc20"><a href="#misc20" class="headerlink" title="misc20"></a>misc20</h2><p>exiftool 之后看评论，flag 是个谐音：</p>
+<p><img src="/post/ctfshow-misc%E5%85%A5%E9%97%A8/misc20.png" srcset="/img/loading.gif" lazyload alt="flag"></p>
+<p><strong>ctfshow{c97964b1aecf06e1d79c21ddad593e42}</strong></p>
+<h2 id="misc21"><a href="#misc21" class="headerlink" title="misc21"></a>misc21</h2><p>依旧是 exiftool ：</p>
+<p><img src="/post/ctfshow-misc%E5%85%A5%E9%97%A8/misc21.png" srcset="/img/loading.gif" lazyload alt="misc21"></p>
+<p>我们可以看到serial number后面有一串数字，这就是我们要找的，但是这不是flag，我们将此转换成ASCII码值，得到这个（hex(X&amp;Ys)）。</p>
+<p>根据这个提示我们需要依次提取X、Y值（3902939465、2371618619、1082452817、2980145261），我们可以看出这四串数字都是十进制数，我们再将这些数字依次转换成十六进制数，然后我们依次拼接也就是<strong>ctfshow{e8a221498d5c073b4084eb51b1a1686d}</strong></p>
+<h2 id="misc22"><a href="#misc22" class="headerlink" title="misc22"></a>misc22</h2><p>010 里面实际上能找到两个 FF D8 ，但是由于第二个 jpg 文件被加在 exif 元数据里面，binwalk 识别不出来。</p>
+<p>这里可以用 010 删数据，也可以用 <strong>exiftool -ThumbnailImage -b &#x2F;misc22.jpg &gt; 123.png</strong> 提取缩略图。</p>
+<p><img src="/post/ctfshow-misc%E5%85%A5%E9%97%A8/123.png" srcset="/img/loading.gif" lazyload alt="flag"></p>
+<h2 id="misc23"><a href="#misc23" class="headerlink" title="misc23"></a>misc23</h2><p>用 exiftool 之后在里面找到 flag 相关线索：</p>
+<p><img src="/post/ctfshow-misc%E5%85%A5%E9%97%A8/misc23.png" srcset="/img/loading.gif" lazyload alt="misc23"></p>
+<p><strong>ctfshow{}, UnixTimestamp, DECtoHEX, getflag</strong></p>
+<p>unix时间戳转成16进制</p>
+<p><strong>flag{03425649ea0e31938808c0de51b70ce6a}</strong></p>
+<h2 id="misc41"><a href="#misc41" class="headerlink" title="misc41"></a>misc41</h2><p>这题目真气笑了。不愧是愚人节特供。</p>
+<p>在 010 里面用 hex 搜索 F001 ，高亮部分就是 flag 。</p>
+<p><img src="/post/ctfshow-misc%E5%85%A5%E9%97%A8/misc41.png" srcset="/img/loading.gif" lazyload alt="flag！！！"></p>
 <blockquote>
 <p>上课去了，等会补上。</p>
 </blockquote>
