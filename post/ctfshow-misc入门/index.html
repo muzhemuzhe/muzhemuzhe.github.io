@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://mu2he.me/images/wind.jpg">
 <meta property="article:published_time" content="2026-03-24T09:47:36.000Z">
-<meta property="article:modified_time" content="2026-03-24T12:33:40.891Z">
+<meta property="article:modified_time" content="2026-03-25T00:01:51.363Z">
 <meta property="article:author" content="mu2he">
 <meta property="article:tag" content="note&#x2F;misc">
 <meta name="twitter:card" content="summary_large_image">
@@ -336,7 +336,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.7k 字
+          2.8k 字
         
       </span>
     
@@ -347,7 +347,7 @@
         
         
         
-          23 分钟
+          24 分钟
         
       </span>
     
@@ -502,9 +502,11 @@
 <h2 id="misc41"><a href="#misc41" class="headerlink" title="misc41"></a>misc41</h2><p>这题目真气笑了。不愧是愚人节特供。</p>
 <p>在 010 里面用 hex 搜索 F001 ，高亮部分就是 flag 。</p>
 <p><img src="/post/ctfshow-misc%E5%85%A5%E9%97%A8/misc41.png" srcset="/img/loading.gif" lazyload alt="flag！！！"></p>
-<blockquote>
-<p>上课去了，等会补上。</p>
-</blockquote>
+<h2 id="misc24"><a href="#misc24" class="headerlink" title="misc24"></a>misc24</h2><p>根据提示，<strong>flag</strong>在图片上面，猜想要更改图片高度。</p>
+<p>更改 <strong>struct BITMAPINFOHEADER bmih &#x2F; LONG biHeight</strong> 的值：</p>
+<p><img src="/post/ctfshow-misc%E5%85%A5%E9%97%A8/misc24_1.png" srcset="/img/loading.gif" lazyload alt="height"></p>
+<p>原来的图片出现 flag：</p>
+<p><img src="/post/ctfshow-misc%E5%85%A5%E9%97%A8/misc24.bmp" srcset="/img/loading.gif" lazyload alt="flag"></p>
 
                 
               </div>
