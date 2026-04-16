@@ -1,0 +1,939 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/Cropped_Image.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="mu2he">
+  <meta name="keywords" content="muzhe">
+  
+    <meta name="description" content="CTF_Misc笔记 something这里可能主要写一点我对于Misc方向的一些解题思路？ 还有的话是我对这个方向的一些吐槽和想法  杂言、介绍  misc 方向实际上包含很多东西，从大方向上来说，应该是：信息搜集、编码转换、数字取证、隐写分析   但是，随着时间和技术的进展，越来越多的题目不在传统CTF的 web、reverse、crypto、pwn 中了，于是乎，这些题目很多放到了 Misc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CTF_misc_入门笔记">
+<meta property="og:url" content="https://mu2he.me/post/CTF-misc-%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="mu2he&#39;s blog">
+<meta property="og:description" content="CTF_Misc笔记 something这里可能主要写一点我对于Misc方向的一些解题思路？ 还有的话是我对这个方向的一些吐槽和想法  杂言、介绍  misc 方向实际上包含很多东西，从大方向上来说，应该是：信息搜集、编码转换、数字取证、隐写分析   但是，随着时间和技术的进展，越来越多的题目不在传统CTF的 web、reverse、crypto、pwn 中了，于是乎，这些题目很多放到了 Misc">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mu2he.me/images/girl.jpg">
+<meta property="article:published_time" content="2026-03-22T05:48:11.000Z">
+<meta property="article:modified_time" content="2026-03-22T08:12:55.884Z">
+<meta property="article:author" content="mu2he">
+<meta property="article:tag" content="misc&#x2F;OSINT">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://mu2he.me/images/girl.jpg">
+  
+  
+  
+  <title>CTF_misc_入门笔记 - mu2he&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"mu2he.me","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>mu2he</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>首页</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>归档</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>分类</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>标签</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/about/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>关于</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>搜索</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="开灯"
+               data-label-dark="关灯">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">关灯</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/train.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="CTF_misc_入门笔记"></span>
+          
+        </div>
+
+
+	
+
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-03-22 13:48" pubdate>
+          2026年3月22日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          18 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">CTF_misc_入门笔记</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="CTF-Misc笔记"><a href="#CTF-Misc笔记" class="headerlink" title="CTF_Misc笔记"></a>CTF_Misc笔记</h2><blockquote>
+<h4 id="something"><a href="#something" class="headerlink" title="something"></a>something</h4><p>这里可能主要写一点我对于Misc方向的一些解题思路？</p>
+<p>还有的话是我对这个方向的一些吐槽和想法</p>
+</blockquote>
+<h3 id="杂言、介绍"><a href="#杂言、介绍" class="headerlink" title="杂言、介绍"></a>杂言、介绍</h3><p>  misc 方向实际上包含很多东西，从大方向上来说，应该是：<strong>信息搜集、编码转换、数字取证、隐写分析</strong></p>
+<p>  但是，随着时间和技术的进展，越来越多的题目不在传统CTF的 <strong>web、reverse、crypto、pwn</strong> 中了，于是乎，这些题目很多放到了 Misc 中，<strong>AI、区块链、iot 等等</strong>，在 misc 这个分类中，会接触到越来越多的东西了，之前有些 Misc 的题目甚至是逆向的师傅拿的一血。</p>
+<p><img src="/post/CTF-misc-%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/Misc.jpg" srcset="/img/loading.gif" lazyload alt="misc"></p>
+<h3 id="信息搜集"><a href="#信息搜集" class="headerlink" title="信息搜集"></a>信息搜集</h3><p>这块内容也叫做<strong>开源情报获取——Open source intelligence(OSINT)</strong> , 从各种信息资源中寻找和获取有价值的情报。</p>
+<p>这里会遇到蛮多的题型，大家比较熟悉的应该有 <strong>图寻</strong> ，也就是根据一张照片判断地理位置、建筑名称之类的。</p>
+<blockquote>
+<p>图寻这块的misc实际上我还没有遇到过。</p>
+</blockquote>
+<p>我现在遇到过的OSINT是两种：<br>MC-OSINT 和 blog-OSINT</p>
+<h4 id="MC-OSINT"><a href="#MC-OSINT" class="headerlink" title="MC-OSINT"></a>MC-OSINT</h4><p>遇见的比赛：SHCTF</p>
+<p><img src="/post/CTF-misc-%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/MCOSINT.png" srcset="/img/loading.gif" lazyload alt="MC-OSINT"></p>
+<blockquote>
+<p>相关工具：cubiomes-viewer<br>推荐使用 xpple&#x2F;cubiomes ，该 fork 版本增加了 1.21.3 以上的版本支持。</p>
+</blockquote>
+<p>根据图片中的相关信息，来判断限制条件，比如群系、朝向。</p>
+<p>也是在这里，知道了蜂蜜块的纹理能够指示方向___*( ￣皿￣)&#x2F;#____</p>
+<p><img src="/post/CTF-misc-%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/fengmi.png" srcset="/img/loading.gif" lazyload alt="蜂蜜块"></p>
+<p>另外：<strong>苍白森林在 1.21.4+ 版本中”替换”了部分黑森林的生成位置，两者的气候参数范围高度重叠。因此，在 cubiomes-viewer 上可以忽略苍白森林，当作黑森林即可。</strong></p>
+<p>其次，绒球葱只在繁花森林和草甸生成，靠绒球葱也能进一步限制各种范围。</p>
+<p>说起来 MC 在 CTF 的题目还真不少，还有给出一段summon指令的，去 MC 里面拿个命令方块能秒解。</p>
+<p><img src="/post/CTF-misc-%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/qizhi.png" srcset="/img/loading.gif" lazyload alt="旗帜"></p>
+<h4 id="OSINT"><a href="#OSINT" class="headerlink" title="OSINT"></a>OSINT</h4><p>我觉得正常的 OSINT 应该是这边这样子的。<br>以 SUCTF 的 Cybertrack 为例，</p>
+<p>给出一个 blog ，猜想加验证拿到邮箱，然后根据图片内容，找到曾用名，从而在twitter上找到链接，拿到最后的东西。</p>
+<p>OSINT的题型其实蛮吃经验的，<del>但是我还挺喜欢的</del></p>
+<p>虽然我基本上没有做出来的OSINT题目，不过就当经验了。</p>
+<h3 id="编码转换"><a href="#编码转换" class="headerlink" title="编码转换"></a>编码转换</h3><p>实际上，这是个每个方向可能都要的部分，很多提示字符串也是被编码（<strong>encode</strong>）之后给出的。</p>
+<h5 id="ASCII编码"><a href="#ASCII编码" class="headerlink" title="#ASCII编码"></a>#ASCII编码</h5><p>  这个学过计算机相关知识的一定不陌生。这是一种使用指定的 7 位或 8 位二进制数组合来表示 128 或 256 种可能字符的编码方式</p>
+<p><img src="/post/CTF-misc-%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/ASCII.png" srcset="/img/loading.gif" lazyload alt="ASCII"></p>
+<p>将 <strong>I Love U</strong> 进行编码后得到：</p>
+<p><img src="/post/CTF-misc-%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/I_Love_U.png" srcset="/img/loading.gif" lazyload alt="I_Love_U"></p>
+<p>十进制：<strong>73 32 76 111 118 101 32 85</strong></p>
+<h5 id="Base"><a href="#Base" class="headerlink" title="#Base"></a>#Base</h5><p>  base家族编码算是现在比较多的的编码方式了。</p>
+<p>  以 Base64 为例，其编码过程为：</p>
+<ul>
+<li>将原始数据按 <strong>3字节（24位）</strong> 分组。</li>
+<li>每组拆分为 <strong>4个6位</strong> 的数据块。</li>
+<li>每个6位数据映射到Base64字符表（A-Z、a-z、0-9、+、&#x2F;）。</li>
+<li>数据长度不足3字节时，用 <strong>0补齐</strong> 并用 <em>&#x3D;</em> 填充输出。</li>
+</ul>
+<p><strong>示例</strong> 字符串 <em>“<strong>Man</strong>“</em> 的ASCII值为 <em>77 97 110</em>，二进制为：</p>
+<p>01001101 01100001 01101110</p>
+<p>分为4组6位：</p>
+<p>010011 010110 000101 101110</p>
+<p>映射到字符表得到 <strong>TWFu</strong></p>
+<p>当然，在 Misc 中可能会出现换表 base64 的编码方式，这时候需要我们去解出他的表。</p>
+<p><img src="/post/CTF-misc-%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/base.png" srcset="/img/loading.gif" lazyload alt="换表Base64"></p>
+<p>所以有时候看到 <strong>Alphabet</strong> 要警惕一点。<del>关于我没注意导致一道简单的Misc想了3个小时这件事</del></p>
+<p>下面是一些常用的Base编码对应的字符集和对应说明：</p>
+<table>
+<thead>
+<tr>
+<th>编码</th>
+<th>字符集</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>BASE2</td>
+<td>01</td>
+<td>二进制</td>
+</tr>
+<tr>
+<td>BASE16</td>
+<td><code>0123456789ABCDEF (或0123456789abcdef)</code></td>
+<td>十六进制</td>
+</tr>
+<tr>
+<td>BASE32</td>
+<td><code>ABCDEFGHIJKLMNOPQRSTUVWXYZ234567</code></td>
+<td>最多6个<code>=</code>号</td>
+</tr>
+<tr>
+<td>BASE32Hex</td>
+<td><code>0123456789ABCDEFGHIJKLMNOPQRSTUV</code></td>
+<td>Base32 的变体</td>
+</tr>
+<tr>
+<td>BASE58</td>
+<td><code>123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz</code></td>
+<td>注意，这个集合避免了容易混淆的字符，例如数字“0”和大写的字母“O”;主要用于比特币地址</td>
+</tr>
+<tr>
+<td>BASE64</td>
+<td><code>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/</code></td>
+<td>最多2个<code>=</code>号</td>
+</tr>
+<tr>
+<td>BASE64URL</td>
+<td><code>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_</code></td>
+<td>适用于 URL 和文件名</td>
+</tr>
+<tr>
+<td>BASE85</td>
+<td><code>!\&quot;#$%&amp;&#39;()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_abcdefghijklmnopqrstu</code></td>
+<td>例如 Adobe’s ASCII85</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>以上表格内容来自于 <strong>2hi5hu</strong> 大佬</p>
+</blockquote>
+<h5 id="URL编码"><a href="#URL编码" class="headerlink" title="#URL编码"></a>#URL编码</h5><p><strong>URL 编码</strong>, 也被称为百分号编码，是一种编码机制，<strong>其特点是编码后会包含大量的百分号</strong>。用于将不安全或特殊的字符转换为<code>%</code>后跟其 ASCII 的十六进制表示，以确保 URL 的安全传输。</p>
+<h5 id="morse-电码"><a href="#morse-电码" class="headerlink" title="#morse 电码"></a>#morse 电码</h5><p><img src="/post/CTF-misc-%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/morse.png" srcset="/img/loading.gif" lazyload alt="morse"></p>
+<blockquote>
+<p>其他编码形式等我遇到了再补上</p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/note/" class="category-chain-item">note</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/misc-OSINT/" class="print-no-link">#misc/OSINT</a>
+      
+    </div>
+  
+</div>
+
+
+              
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/post/TamuCTF-WP/" title="TamuCTF_WP">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">TamuCTF_WP</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/post/SUCTF-wp-2026/" title="SUCTF2026 misc方向wp">
+                        <span class="hidden-mobile">SUCTF2026 misc方向wp</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="waline"></div>
+  <script type="module">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createCssLink('https://cdn.jsdelivr.net/npm/@waline/client@v3/dist/waline.css')
+      import('https://cdn.jsdelivr.net/npm/@waline/client@v3/dist/waline.js').then(({ init }) => {
+        var options = Object.assign(
+          {"serverURL":"https://mu2heblogc.vercel.app","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":[1,500],"pageSize":10},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        init(options);
+        Fluid.utils.waitElementVisible('#waline .wl-content', () => {
+          var imgSelector = '#waline .wl-content img:not(.wl-emoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="/js/click-effect.js"></script>
+<script src="/js/progress.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
